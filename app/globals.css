@@ -1,6 +1,6 @@
-@tailwind.config.ts base;
- @tailwind.config.ts components;
- @tailwind.config.ts utilities;
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
 
 /* CSS tokens (минимальный старт) */
 :root{
