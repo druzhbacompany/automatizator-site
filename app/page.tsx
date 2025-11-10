@@ -1,4 +1,5 @@
-import Section from "./(site)/components/Section";
+import { services } from "@/data/services"
+import ServiceCard from "./(site)/components/ServiceCard"
 
 const services = [
   { title:"TG-контент-системы и автопостинг", desc:"Сбор контента, фильтры, расписания.", benefit:"Экономия 2–4 ч/день и стабильный рост охватов."},
