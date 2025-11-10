@@ -1,0 +1,49 @@
+0 verbose cli /usr/local/Cellar/node/24.3.0/bin/node /usr/local/bin/npm
+1 info using npm@11.4.2
+2 info using node@v24.3.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/glebkoroteev/.npmrc
+5 silly config load:file:/Users/glebkoroteev/projects/automatizator-site/.home/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm init next-app @latest . --ts --app --eslint --tailwind --src-dir=false --import-alias  @/* --use-npm
+8 verbose argv "init" "next-app" "@latest" "." "--yes" "--" "--ts" "--app" "--eslint" "--tailwind" "--src-dir=false" "--import-alias" " @/*" "--use-npm"
+9 verbose logfile logs-max:10 dir:/Users/glebkoroteev/projects/automatizator-site/.npm-cache/_logs/2025-11-10T05_25_03_096Z-
+10 verbose logfile /Users/glebkoroteev/projects/automatizator-site/.npm-cache/_logs/2025-11-10T05_25_03_096Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 http fetch GET 200 https://registry.npmjs.org/create-next-app 1035ms (cache revalidated)
+14 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+15 silly idealTree buildDeps
+16 silly fetch manifest create-next-app@16.0.1
+17 silly packumentCache full:https://registry.npmjs.org/create-next-app cache-miss
+18 http cache https://registry.npmjs.org/create-next-app 217ms (cache hit)
+19 silly packumentCache full:https://registry.npmjs.org/create-next-app set size:8888444 disposed:false
+20 silly placeDep ROOT create-next-app@16.0.1 OK for:  want: 16.0.1
+21 silly reify moves {}
+22 silly audit bulk request { 'create-next-app': [ '16.0.1' ] }
+23 http cache create-next-app@https://registry.npmjs.org/create-next-app/-/create-next-app-16.0.1.tgz 0ms (cache hit)
+24 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 386ms
+25 silly audit report {}
+26 verbose stack Error: command failed
+26 verbose stack     at promiseSpawn (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:22:22)
+26 verbose stack     at spawnWithShell (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:124:10)
+26 verbose stack     at promiseSpawn (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:12:12)
+26 verbose stack     at runScriptPkg (/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/run-script-pkg.js:79:13)
+26 verbose stack     at runScript (/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/run-script.js:9:12)
+26 verbose stack     at run (/usr/local/lib/node_modules/npm/node_modules/libnpmexec/lib/run-script.js:57:10)
+26 verbose stack     at async exec (/usr/local/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:305:10)
+26 verbose stack     at async Init.execCreate (/usr/local/lib/node_modules/npm/lib/commands/init.js:143:5)
+26 verbose stack     at async Init.exec (/usr/local/lib/node_modules/npm/lib/commands/init.js:46:14)
+26 verbose stack     at async Npm.exec (/usr/local/lib/node_modules/npm/lib/npm.js:208:9)
+27 verbose pkgid glebkoroteev@1.0.0
+28 error code 1
+29 error path /Users/glebkoroteev/projects/automatizator-site
+30 error command failed
+31 error command sh -c "create-next-app" @latest . --ts --app --eslint --tailwind --src-dir=false --import-alias ' @/*' --use-npm
+32 verbose cwd /Users/glebkoroteev/projects/automatizator-site
+33 verbose os Darwin 22.6.0
+34 verbose node v24.3.0
+35 verbose npm  v11.4.2
+36 verbose exit 1
+37 verbose code 1
+38 error A complete log of this run can be found in: /Users/glebkoroteev/projects/automatizator-site/.npm-cache/_logs/2025-11-10T05_25_03_096Z-debug-0.log
