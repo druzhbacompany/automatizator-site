@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NEXT_DISABLE_TURBOPACK=1 next dev",
-    "build": "next build && next-sitemap",
+    "build": "next build && next-sitemap --config next-sitemap.config.cjs",
     "start": "next start -p 3000",
     "lint": "next lint"
   },
