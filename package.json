@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "NEXT_DISABLE_TURBOPACK=1 next dev",
+    "build": "next build && next-sitemap",
+    "start": "next start -p 3000",
     "lint": "next lint"
   },
   "keywords": [],
@@ -16,9 +16,9 @@
   "type": "module",
   "private": "true",
   "dependencies": {
-    "next": "^16.0.1",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "next": "14.2.15",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",
@@ -27,7 +27,10 @@
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.1",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.17",
+    "tailwindcss": "^3.4.13",
     "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18 <23"
   }
 }
