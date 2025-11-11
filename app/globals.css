@@ -1,8 +1,7 @@
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* CSS tokens (минимальный старт) */
 :root{
   --color-bg:#0B0B0C;
   --color-fg:#F5F7FA;
@@ -10,13 +9,14 @@
   --color-primary:#d40000;
   --radius-xl:1.25rem;
 }
-
 html,body{background:var(--color-bg);color:var(--color-fg);}
-a{color:inherit;text-decoration:none}
-.container{max-width:1120px;margin:0 auto;padding:0 20px}
-.card{background:#111317;border:1px solid #1f2430;border-radius:var(--radius-xl)}
-.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:.75rem;padding:.8rem 1.1rem;background:var(--color-primary);color:#fff;font-weight:700}
-.table{width:100%;border-collapse:separate;border-spacing:0}
-.table th,.table td{padding:.9rem 1rem;border-bottom:1px solid #222733}
-.table th{color:#cbd5e1;text-align:left;font-weight:700}
-.small{color:var(--color-muted);font-size:.9rem}
+
+@layer components{
+  .container{ @apply mx-auto max-w-[1120px] px-5}
+  .btn{ @apply inline-flex items-center gap-2 rounded-lg px-4 py-3 font-bold text-white bg-[var(--color-primary)]}
+  .small{ @apply text-sm text-gray-400}
+  .card{ @apply bg-[#111317] border border-[#1f2430] rounded-xl}
+  .table{ @apply w-full border-separate border-spacing-0}
+  .table th,.table td{ @apply px-4 py-3 border-b border-[#222733]}
+  .table th{ @apply text-left font-bold text-slate-300}
+}

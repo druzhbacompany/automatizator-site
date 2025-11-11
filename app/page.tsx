@@ -1,20 +1,15 @@
-import { services } from "@/data/services"
-import ServiceCard from "./(site)/components/ServiceCard"
-
-const services = [
-  { title:"TG-контент-системы и автопостинг", desc:"Сбор контента, фильтры, расписания.", benefit:"Экономия 2–4 ч/день и стабильный рост охватов."},
-  { title:"Чат-боты и мини-приложения", desc:"Запись, квизы, продажи, CRM-связки.", benefit:"Больше заявок без роста штата."},
-  { title:"Интеграции: GetCourse/Salebot/Bizon", desc:"Платежи, статусы, вебинары, воронки.", benefit:"Меньше ручных ошибок и «залипаний»."},
-  { title:"n8n/Make сценарии", desc:"Повторяющиеся процессы — в автоматы.", benefit:"Команда занимается задачами роста."},
-  { title:"Парсеры, импорт/экспорт", desc:"Каталоги, карточки, отзывы, PDF/изображения.", benefit:"Каталог 5–10k SKU без ручного ввода."},
-  { title:"Woo + Kadence + SEO", desc:"ACF/шаблоны, CSV-импорт, SEO-структура.", benefit:"Масштаб до 10k+ товаров, индексация."},
-  { title:"Сайты на Lovable.dev", desc:"Лендинги и сайты с правкой через GitHub.", benefit:"Быстрый прогон идей в прод."}
-];
+import { services } from "@/data/services";
+import Section from "./(site)/components/Section";
+import { cases } from '@/data/cases'
+import { benefits } from '@/data/benefits'
+import ServiceCard from "./(site)/components/ServiceCard";
+import PlainBenefit from './(site)/components/PlainBenefit'
+import CaseCard from './(site)/components/CaseCard'
 
 const faqs = [
-  {q:"Как стартуем?", a:"Короткий бриф → план на 2–3 итерации → MVP за 3–7 дней."},
-  {q:"Сроки?", a:"MVP 3–10 дней, средние 2–4 недели."},
-  {q:"Оплата?", a:"Фикс по этапам или T&M, прозрачные отчеты."},
+  { q: "Как стартуем?", a: "Короткий бриф → план на 2–3 итерации → MVP за 3–7 дней." },
+  { q: "Сроки?", a: "MVP 3–10 дней, средние 2–4 недели." },
+  { q: "Оплата?", a: "Фикс по этапам или T&M, прозрачные отчёты." },
 ];
 
 export default function Home() {
@@ -49,14 +44,17 @@ export default function Home() {
       <Section id="services" title="Что делаем" lead="Живые решения под цели бизнеса.">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s,i)=>(
-            <div key={i} className="card p-5">
-              <div className="text-lg font-bold mb-1">{s.title}</div>
-              <p className="small mb-3">{s.desc}</p>
-              <div className="text-sm text-[#e5e7eb]">✅ {s.benefit}</div>
-            </div>
+            <ServiceCard key={i} title={s.title} desc={s.desc} benefit={s.benefit} />
           ))}
         </div>
       </Section>
+
+      <Section id="plain" title="Услуги простым языком" lead="Без тех-вода: что именно даёт бизнесу.">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map((b,i)=>(<PlainBenefit key={i} {...b} />))}
+        </div>
+      </Section>
+
 
       <Section id="sla" title="SLA / как работаем" lead="Прозрачно и предсказуемо.">
         <div className="card p-0 overflow-hidden">
@@ -72,7 +70,13 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="faq" title="FAQ">
+            <Section id="cases" title="Кейсы" lead="Мини-резюме: было → стало → цифры.">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cases.map((c,i)=>(<CaseCard key={i} {...c} />))}
+        </div>
+      </Section>
+
+<Section id="faq" title="FAQ">
         <div className="grid md:grid-cols-2 gap-4">
           {faqs.map((f,i)=>(
             <div key={i} className="card p-5">
