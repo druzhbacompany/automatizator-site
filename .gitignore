@@ -34,3 +34,6 @@ next-dev-webpack.log
 # Build artifacts
 .sass-cache/
 .cache/
+# next-sitemap outputs
+/public/sitemap*.xml
+/public/robots.txt
