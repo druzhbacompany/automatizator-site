@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
 
-export default function ContactForm({ compact = false }: { compact?: boolean }) {
+export default function ContactForm({ compact = false }: { compact?: boolean }){
+  const [ts] = useState(() => Date.now());
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -19,7 +20,7 @@ export default function ContactForm({ compact = false }: { compact?: boolean }) 
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify({ name, email, phone, message })
+        body: JSON.stringify({ name, email, phone, message, website: "", ts })
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data?.ok === false) {
@@ -38,7 +39,7 @@ export default function ContactForm({ compact = false }: { compact?: boolean }) 
 
   return (
     <form onSubmit={onSubmit} className="max-w-xl w-full space-y-3">
-      <div className="grid gap-3">
+      <div className="grid gap-3">\n        <input name="website" autoComplete="off" tabIndex={-1} className="hidden" aria-hidden="true" />
         <input className="input" placeholder="Имя *" value={name} onChange={e=>setName(e.target.value)} required />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <input className="input" placeholder="Email" type="email" value={email} onChange={e=>setEmail(e.target.value)} />
