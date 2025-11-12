@@ -26,7 +26,8 @@ export default function Home() {
             </p>
             <div className="mt-6 flex gap-3">
               <a href="#services" className="btn">Смотреть услуги</a>
-              <a href="#contact" className="btn" style={{background:"#1f2937"}}>Консультация</a>
+              <a 
+            <a href="/contact" className="btn ml-3">Страница контактов</a>
             </div>
           </div>
           <div className="card p-6 shadow-soft">
