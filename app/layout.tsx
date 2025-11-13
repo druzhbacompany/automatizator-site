@@ -14,10 +14,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container flex items-center justify-between py-4">
             <div className="font-black tracking-tight text-xl">Automatizator</div>
             <nav className="flex items-center gap-6 text-sm text-muted">
-              <a href="#services" className="hover:text-white">Услуги</a>
-              <a href="#sla" className="hover:text-white">SLA</a>
-              <a href="#faq" className="hover:text-white">FAQ</a>
-              <a href="#contact" className="btn">Связаться</a>
+              <a href="/services" className="hover:text-white">
+                Услуги
+              </a>
+              <a href="/pricing" className="hover:text-white">
+                Цены и SLA
+              </a>
+              <a href="/#faq" className="hover:text-white">
+                FAQ
+              </a>
+              <a href="/contact" className="btn">
+                Связаться
+              </a>
             </nav>
           </div>
         </header>
