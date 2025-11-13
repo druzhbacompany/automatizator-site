@@ -4,6 +4,7 @@ import servicesData from "@/data/services.long.json";
 
 type Service = {
   slug: string;
+  title?: string;
   name?: string;
   shortTitle?: string;
   lead?: string;
@@ -89,7 +90,7 @@ export default function ServicesPage() {
                   </span>
                 </div>
                 <h3 className="text-sm font-semibold text-slate-50 sm:text-base">
-                  {service.shortTitle || service.name || "Услуга автоматизации"}
+                  {service.shortTitle || service.title || service.name || "Услуга автоматизации"}
                 </h3>
                 {service.lead && (
                   <p className="mt-2 text-xs text-slate-300 sm:text-sm">
