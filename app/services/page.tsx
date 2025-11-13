@@ -48,7 +48,7 @@ export default function ServicesPage() {
           </div>
           <div className="space-y-4">
             <h1 className="text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
-              Что именно я могу автоматизировать
+              Что именно мы можем автоматизировать
             </h1>
             <p className="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
               Ниже — набор услуг, из которых собираются пакеты START / GROW / SCALE: боты, автоматизации на n8n,
@@ -182,8 +182,8 @@ export default function ServicesPage() {
               Обсудить задачу
             </a>
             <p className="text-xs text-slate-400 sm:text-sm">
-              Можно просто скинуть ссылку на текущие сервисы и кратко описать проблему — дальше я задам точечные
-              вопросы.
+              Можно просто скинуть ссылку на текущие сервисы и кратко описать проблему — дальше мы зададим точечные
+вопросы.
             </p>
           </div>
         </section>

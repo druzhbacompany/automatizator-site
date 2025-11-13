@@ -200,7 +200,7 @@ export default function PricingPage() {
               <p className="mt-1 text-sm font-semibold text-emerald-300">от 4 000 до 12 000 ₽</p>
               <p className="mt-2 text-xs leading-relaxed text-slate-300 sm:text-sm">
                 Одна услуга на выбор: интеграция, сценарий бота, отчёт, мелкий фикс. Формат: вы описываете проблему,
-                я предлагаю решение и фиксирую бюджет до начала работ.
+                мы предлагаем решение и фиксируем бюджет до начала работ.
               </p>
             </div>
             <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
