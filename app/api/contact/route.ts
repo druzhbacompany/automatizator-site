@@ -1,90 +1,49 @@
-import type { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+
+type ContactPayload = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+  website?: string;
+  ts?: number;
+  source?: string;
+  context?: string;
+};
 
 export async function POST(req: NextRequest) {
   try {
-    const ip =
-      (req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '')
-        .split(',')[0].trim() || '127.0.0.1';
+    const body = (await req.json()) as ContactPayload;
 
-    const clen = parseInt(req.headers.get('content-length') || '0', 10);
-    if (clen > 10_000) {
-      return new Response(JSON.stringify({ ok: false, error: 'PAYLOAD_TOO_LARGE' }), {
-        status: 413, headers: { 'Content-Type': 'application/json' },
-      });
+    // honeypot: если "website" заполнен — считаем спамом и молча отвечаем ok
+    if (body.website && body.website.trim().length > 0) {
+      return NextResponse.json({ ok: true }, { status: 200 });
     }
 
-    try {
-      const { rateLimitOk } = await import('@/lib/rate-limit');
-      if (!rateLimitOk(`contact:${ip}`, { windowMs: 60_000, max: 8 })) {
-        return new Response(JSON.stringify({ ok:false, error:'RATE_LIMITED' }), {
-          status: 429,
-          headers: { 'Content-Type': 'application/json', 'Retry-After': '60' },
-        });
-      }
-    } catch {}
-
-    const body = await req.json().catch(() => ({} as any));
-    const { name, email, phone, message, website, ts } = body || {};
-
-    if (typeof website === 'string' && website.trim().length > 0) {
-      return new Response(JSON.stringify({ ok:false, error:'SPAM_DETECTED' }), {
-        status: 400, headers: { 'Content-Type': 'application/json' },
-      });
+    // обязательные поля
+    if (!body.name || !body.message) {
+      return NextResponse.json(
+        { ok: false, error: 'MISSING_REQUIRED_FIELDS' },
+        { status: 400 },
+      );
     }
 
-    const now = Date.now();
-    const clientTs = Number(ts) || 0;
-    if (!clientTs || now - clientTs < 1500) {
-      return new Response(JSON.stringify({ ok:false, error:'TOO_FAST' }), {
-        status: 400, headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    if (!name || !message) {
-      return new Response(JSON.stringify({ ok:false, error:'VALIDATION_ERROR' }), {
-        status: 400, headers: { 'Content-Type':'application/json' },
-      });
-    }
-
-    const bot  = process.env.TELEGRAM_BOT_TOKEN;
-    const chat = process.env.TELEGRAM_CHAT_ID;
-    const crm  = process.env.CRM_WEBHOOK_URL;
-
-    const tasks: Promise<any>[] = [];
-
-    if (bot && chat) {
-      const text = [
-        '🆕 Заявка с сайта',
-        `IP: ${ip}`,
-        `Имя: ${name}`,
-        email ? `Email: ${email}` : null,
-        phone ? `Телефон: ${phone}` : null,
-        `Сообщение: ${message}`
-      ].filter(Boolean).join('\n');
-
-      tasks.push(fetch(`https://api.telegram.org/bot${bot}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify({ chat_id: chat, text })
-      }));
-    }
-
-    if (crm) {
-      tasks.push(fetch(crm, {
-        method: 'POST',
-        headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify({ source:'site', ip, name, email, phone, message, ts: now })
-      }));
-    }
-
-    await Promise.allSettled(tasks);
-
-    return new Response(JSON.stringify({ ok:true }), {
-      status: 200, headers: { 'Content-Type':'application/json' },
+    console.log('[contact] new lead', {
+      name: body.name,
+      email: body.email,
+      phone: body.phone,
+      ts: body.ts,
+      source: body.source,
+      context: body.context,
     });
-  } catch {
-    return new Response(JSON.stringify({ ok:false, error:'SERVER_ERROR' }), {
-      status: 500, headers: { 'Content-Type': 'application/json' },
-    });
+
+    // TODO: сюда позже добавим отправку в Telegram / CRM / почту
+    return NextResponse.json({ ok: true }, { status: 200 });
+  } catch (error) {
+    console.error('[contact] error', error);
+    return NextResponse.json(
+      { ok: false, error: 'INTERNAL_ERROR' },
+      { status: 500 },
+    );
   }
 }

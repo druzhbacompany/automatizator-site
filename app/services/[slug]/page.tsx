@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import servicesData from '@/data/services.long.json';
+import ContactForm from '@/app/components/ContactForm';
 
 type PricingRef = 'start' | 'grow' | 'scale';
 
@@ -398,29 +399,35 @@ export default function ServicePage({ params }: PageProps) {
           </section>
         )}
 
-        {/* CTA */}
+        {/* CTA + форма заявки по услуге */}
         <section
           id="service-cta"
-          className="space-y-4 rounded-2xl border border-emerald-500/60 bg-gradient-to-r from-emerald-500/10 via-slate-900/80 to-slate-950 p-5"
+          className="border-t border-slate-800 bg-slate-900/40 mt-16"
         >
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
-            Обсудим, как эта услуга ляжет в ваш стек
-          </h2>
-<p className="max-w-2xl text-sm leading-relaxed text-slate-200 sm:text-base">
-  Опишите, на каких сервисах вы сейчас работаете, где чаще всего ломается путь клиента и какие задачи уже
-  пробовали решать. Мы предложим 1–2 формата работы по этой услуге или комбинацию с другими из списка.
-</p>
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
-            >
-              Оставить заявку
-            </a>
-            <p className="text-xs text-emerald-100/90 sm:text-sm">
-              Можно приложить ссылки на бота, сайт, CRM или схемы. Чем больше
-              контекста — тем точнее будет предложение.
-            </p>
+          <div className="max-w-5xl mx-auto px-4 py-12 lg:py-16 grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-start">
+            <div>
+              <h2 className="text-2xl font-semibold mb-3">
+                Обсудить услугу «{service.title}»
+              </h2>
+              <p className="text-slate-300 mb-3">
+                Опишите, что сейчас болит: где ломается воронка, какие задачи
+                закрываете руками, чего хотите от автоматизации именно в рамках
+                этой услуги.
+              </p>
+              <p className="text-slate-400 text-sm">
+                Мы посмотрим на ваш стек, предложим 1–2 формата работы и подскажем,
+                стоит ли начинать именно с этой услуги или есть более быстрый шаг.
+              </p>
+            </div>
+
+            <div className="bg-slate-950/70 border border-slate-800 rounded-2xl p-4 md:p-5 shadow-xl shadow-black/40">
+              <ContactForm
+                compact
+                source="service-page"
+                context={`service:${service.slug}`}
+                defaultMessage={`Хочу обсудить услугу: ${service.title}. Кратко о задаче:`}
+              />
+            </div>
           </div>
         </section>
       </div>
