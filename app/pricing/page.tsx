@@ -326,9 +326,8 @@ export default function PricingPage() {
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-slate-200 sm:text-base">
             Опишите текущую ситуацию: на чём работает школа, где ломается путь клиента, какие задачи уже пробовали
-            решать. Я предложу 1–2 варианта с понятным бюджетом и сроками и помогу выбрать, с чего разумнее начать.
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
+            решать. Мы предложим 1–2 варианта с понятным бюджетом и сроками и поможем выбрать, с чего разумнее начать.
+          </p>          <div className="flex flex-wrap items-center gap-3">
             <a
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"

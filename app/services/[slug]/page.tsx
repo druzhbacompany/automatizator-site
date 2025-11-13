@@ -406,12 +406,10 @@ export default function ServicePage({ params }: PageProps) {
           <h2 className="text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
             Обсудим, как эта услуга ляжет в ваш стек
           </h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-slate-200 sm:text-base">
-            Опишите, на каких сервисах вы сейчас работаете, где чаще всего
-            ломается путь клиента и какие задачи уже пробовали решать. Я
-            предложу 1–2 формата работы по этой услуге или комбинацию с
-            другими из списка.
-          </p>
+<p className="max-w-2xl text-sm leading-relaxed text-slate-200 sm:text-base">
+  Опишите, на каких сервисах вы сейчас работаете, где чаще всего ломается путь клиента и какие задачи уже
+  пробовали решать. Мы предложим 1–2 формата работы по этой услуге или комбинацию с другими из списка.
+</p>
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="/contact"

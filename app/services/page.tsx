@@ -172,10 +172,9 @@ export default function ServicesPage() {
             Необязательно сразу выбирать услугу
           </h2>
           <p className="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
-            Опишите, где именно сейчас «болит»: заявки, выдача доступов, интеграции, отчёты. Я предложу 1–2 связки из
-            услуг выше и покажу, что именно изменится по цифрам и рутине.
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
+            Опишите, где именно сейчас «болит»: заявки, выдача доступов, интеграции, отчёты. Мы предложим 1–2 связки
+            из услуг выше и покажем, что именно изменится по цифрам и рутине.
+          </p>          <div className="flex flex-wrap items-center gap-3">
             <a
               href="/contact"
               className="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
