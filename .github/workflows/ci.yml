@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-smoke:
+    runs-on: ubuntu-latest
+
+    env:
+      SMOKE_URL: https://automatizator-site.vercel.app
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Smoke check headers and /api/ping
+        run: |
+          echo "Using SMOKE_URL=${SMOKE_URL}"
+
+          echo "::group::HEADERS /"
+          curl -sSI "$SMOKE_URL/" | tee /tmp/headers-root.txt
+          echo "::endgroup::"
+
+          echo "Checking required security headers..."
+          grep -qi "x-content-type-options: nosniff" /tmp/headers-root.txt
+          grep -qi "x-frame-options: SAMEORIGIN" /tmp/headers-root.txt
+          grep -qi "referrer-policy: strict-origin-when-cross-origin" /tmp/headers-root.txt
+          grep -qi "permissions-policy:" /tmp/headers-root.txt
+
+          echo "::group::PING /api/ping"
+          curl -sS "$SMOKE_URL/api/ping" | tee /tmp/ping.json
+          echo "::endgroup::"
+
+          echo "Checking ping JSON..."
+          grep -q '"ok":true' /tmp/ping.json
