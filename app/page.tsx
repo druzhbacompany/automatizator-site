@@ -58,6 +58,36 @@ const PROCESS_STEPS = [
   },
 ];
 
+const SEGMENTS = [
+  {
+    id: 'segment-edtech',
+    label: 'Онлайн-школы и эксперты',
+    badge: 'Онлайн-проекты',
+    title: 'Онлайн-школы, продюсеры, авторы курсов',
+    short: 'Запуски, вебинары, автоворонки на GetCourse, Salebot и других платформах.',
+    pain: 'Тонете в интеграциях и ручной рутине, падает доходимость до уроков и вебинаров.',
+    cta: 'Решения для онлайн-школ',
+  },
+  {
+    id: 'segment-beauty',
+    label: 'Салоны и студии',
+    badge: 'Beauty-сфера',
+    title: 'Салоны красоты, барбершопы, студии маникюра и бровей',
+    short: 'Запись, напоминания и календарь, чтобы мастера работали с полной загрузкой.',
+    pain: 'До 20–40% клиентов не доходят до записи — просто забывают или путают время.',
+    cta: 'Решения для салонов',
+  },
+  {
+    id: 'segment-local',
+    label: 'Локальный бизнес',
+    badge: 'Офлайн-сервисы',
+    title: 'Автомойки, СТО, тренеры, залы, студии',
+    short: 'Телеграм-запись, напоминания и простая аналитика без отдельного администратора.',
+    pain: 'Пустые окна в расписании и хаос в записях в WhatsApp, тетрадках и Excel.',
+    cta: 'Решения для локального бизнеса',
+  },
+];
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
@@ -105,6 +135,61 @@ export default function HomePage() {
             Работаем с онлайн-школами, продюсерами и малыми командами, которым нужен
             «свой техспец», а не штатный отдел разработки.
           </p>
+        </div>
+      </section>
+
+      {/* КОМУ ПОДХОДИТ */}
+      <section className="mt-10 lg:mt-16">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                Кому особенно заходит автоматизация
+              </h2>
+              <p className="mt-2 text-sm text-slate-300 max-w-2xl">
+                Мы не продаём «абстрактную автоматизацию». Под каждый тип бизнеса
+                есть понятные сценарии: что именно убираем с головы владельца
+                и команды.
+              </p>
+            </div>
+            <div className="text-xs text-slate-400 max-w-xs">
+              <p>
+                Нажмите на свой тип бизнеса — страница прокрутится к блоку
+                с примерами задач и форматом работы именно для вас.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {SEGMENTS.map((seg) => (
+              <a
+                key={seg.id}
+                href={`/#${seg.id}`}
+                className="group relative flex flex-col rounded-2xl border border-slate-800 bg-slate-950/80 p-4 transition hover:border-emerald-500/70 hover:bg-slate-900"
+              >
+                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-wide text-emerald-300 mb-1">
+                  <span className="px-2 py-0.5 rounded-full border border-emerald-500/50 bg-emerald-500/5">
+                    {seg.badge}
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-base font-semibold text-slate-50">
+                  {seg.title}
+                </h3>
+                <p className="mt-2 text-xs sm:text-sm text-slate-300">
+                  {seg.short}
+                </p>
+                <p className="mt-3 text-[11px] text-slate-400">
+                  {seg.pain}
+                </p>
+                <div className="mt-4 flex items-center gap-2 text-[12px] font-medium text-emerald-400">
+                  <span>{seg.cta}</span>
+                  <span className="transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -231,6 +316,250 @@ export default function HomePage() {
                 <p className="text-xs text-slate-300">{step.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* СЕГМЕНТ: ОНЛАЙН-ШКОЛЫ */}
+      <section
+        id="segment-edtech"
+        className="border-t border-slate-800 bg-slate-950/60 mt-16"
+      >
+        <div className="max-w-5xl mx-auto px-4 py-10 lg:py-14 space-y-6">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-wide text-emerald-300 mb-1">
+                Онлайн-школы и эксперты
+              </p>
+              <h2 className="text-2xl font-semibold tracking-tight mb-2">
+                Когда запусков много, а техрутина съедает силы
+              </h2>
+              <p className="text-sm text-slate-300 max-w-2xl">
+                GetCourse, Salebot, вебинары, автоворонки, рассылки. Вместо того,
+                чтобы думать про продукт и продажи, команда застревает в сценариях,
+                доступах и отчётах.
+              </p>
+            </div>
+            <div className="text-xs text-slate-400 max-w-xs">
+              <p>Цель — чтобы до уроков и вебинаров доходили, а не терялись в пути.</p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="text-sm font-semibold text-slate-50 mb-1">
+                Выдача доступов и статусы
+              </h3>
+              <p className="text-xs text-slate-300">
+                Автоматическая выдача доступов, смена статусов и напоминания:
+                меньше ручного копипаста, меньше потерянных учеников.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="text-sm font-semibold text-slate-50 mb-1">
+                Боты вокруг запусков
+              </h3>
+              <p className="text-xs text-slate-300">
+                Telegram-боты под прогрев, вебинары и продажи: регистрация,
+                напоминания, быстрые вопросы и логирование активности.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="text-sm font-semibold text-slate-50 mb-1">
+                Отчёты и цифры
+              </h3>
+              <p className="text-xs text-slate-300">
+                Собираем ключевые метрики в одном месте: заявки, оплаты, конверсии,
+                загрузка менеджеров. Без «собирать руками по сервисам».
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-start">
+            <div className="space-y-3">
+              <p className="text-sm text-slate-300">
+                Обычно начинаем с одного-двух сценариев: например, автоматизируем
+                выдачу доступов и напоминания к урокам, а затем добавляем бота
+                под вебинары или прогрев.
+              </p>
+              <p className="text-xs text-slate-500">
+                Важно: не ломаем текущую систему. Сначала аккуратный пилот,
+                потом расширение.
+              </p>
+            </div>
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 md:p-5">
+              <ContactForm
+                compact
+                source="home-segment"
+                context="segment:edtech"
+                defaultMessage="Кратко опишите вашу онлайн-школу: платформа (GetCourse/другая), сколько студентов, где сейчас больше всего ручной рутины."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* СЕГМЕНТ: BEAUTY */}
+      <section
+        id="segment-beauty"
+        className="border-t border-slate-800 bg-slate-950 mt-12"
+      >
+        <div className="max-w-5xl mx-auto px-4 py-10 lg:py-14 space-y-6">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-wide text-emerald-300 mb-1">
+                Beauty-сфера
+              </p>
+              <h2 className="text-2xl font-semibold tracking-tight mb-2">
+                Запись и напоминания для салонов и студий
+              </h2>
+              <p className="text-sm text-slate-300 max-w-2xl">
+                Клиенты записываются в Telegram, получают напоминания, а вы видите
+                все записи в одном календаре. Без тетрадок, хаоса в мессенджерах
+                и пустых окон.
+              </p>
+            </div>
+            <div className="text-xs text-slate-400 max-w-xs">
+              <p>
+                Практика показывает: грамотные напоминания и предоплата дают
+                +20–30% к явке и выручке без увеличения рекламы.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="text-sm font-semibold text-slate-50 mb-1">
+                Запись в Telegram вместо звонков
+              </h3>
+              <p className="text-xs text-slate-300">
+                Клиент выбирает услугу, мастера и время прямо в боте. Администратор
+                видит запись в календаре и не проводит весь день в звонках.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="text-sm font-semibold text-slate-50 mb-1">
+                Напоминания и подтверждения
+              </h3>
+              <p className="text-xs text-slate-300">
+                Напоминания за день и за пару часов, возможность подтвердить или
+                перенести запись — меньше «забыли прийти» и пустых окон.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="text-sm font-semibold text-slate-50 mb-1">
+                Календарь и простая аналитика
+              </h3>
+              <p className="text-xs text-slate-300">
+                Наглядное расписание по мастерам и дни, отчет по явке и по выручке.
+                Понимаете, где нагружены, а где теряете деньги.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-start">
+            <div className="space-y-3">
+              <p className="text-sm text-slate-300">
+                Можно начать с одного филиала или одной студии: подключаем бота,
+                настраиваем сценарий записи и напоминаний, тестируем на ваших
+                клиентах и только потом расширяем.
+              </p>
+              <p className="text-xs text-slate-500">
+                На старте не нужен сложный сайт или CRM — достаточно Telegram
+                и понятных правил работы.
+              </p>
+            </div>
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 md:p-5">
+              <ContactForm
+                compact
+                source="home-segment"
+                context="segment:beauty"
+                defaultMessage="Расскажите о вашем салоне/студии: сколько мастеров, как сейчас ведёте запись и где больше всего хаоса."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* СЕГМЕНТ: ЛОКАЛЬНЫЙ БИЗНЕС */}
+      <section
+        id="segment-local"
+        className="border-t border-slate-800 bg-slate-950/80 mt-12"
+      >
+        <div className="max-w-5xl mx-auto px-4 py-10 lg:py-14 space-y-6">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-wide text-emerald-300 mb-1">
+                Локальный бизнес и сервисы
+              </p>
+              <h2 className="text-2xl font-semibold tracking-tight mb-2">
+                Автомойки, СТО, тренеры, залы, студии
+              </h2>
+              <p className="text-sm text-slate-300 max-w-2xl">
+                Если ваш бизнес живет на записи по времени — можно убрать
+                большую часть хаоса через бота: запись, напоминания, простая
+                аналитика и, при желании, предоплата.
+              </p>
+            </div>
+            <div className="text-xs text-slate-400 max-w-xs">
+              <p>
+                Подходит, если вы устали от бесконечных звонков и сообщений «а можно
+                на сегодня на 18:00?» и хотите видеть нормальное расписание.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="text-sm font-semibold text-slate-50 mb-1">
+                Запись по слотам
+              </h3>
+              <p className="text-xs text-slate-300">
+                Клиент выбирает свободное окно, вы не ловите всех в ручном режиме.
+                Можно задавать длительность услуг и окна для каждого дня.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="text-sm font-semibold text-slate-50 mb-1">
+                Напоминания и предоплата
+              </h3>
+              <p className="text-xs text-slate-300">
+                Напоминания помогают поднять явку, а предоплата или небольшая бронь
+                сокращает количество «передумал и не предупредил».
+              </p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              <h3 className="text-sm font-semibold text-slate-50 mb-1">
+                Мини-отчеты по сменам
+              </h3>
+              <p className="text-xs text-slate-300">
+                Сколько записей в день, какая явка, какие смены загружены лучше —
+                всё это можно видеть без сложной CRM и таблиц.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-start">
+            <div className="space-y-3">
+              <p className="text-sm text-slate-300">
+                Мы подстраиваемся под ваш формат: кто-то хочет только запись
+                и напоминания, кто-то — ещё и оплату, кто-то — связку с CRM
+                и отчетами. Начинаем с простого сценария и растём по мере
+                необходимости.
+              </p>
+              <p className="text-xs text-slate-500">
+                Можно стартовать даже с одного направления: например, только мойка
+                или только зал, а дальше масштабировать на другие услуги.
+              </p>
+            </div>
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 md:p-5">
+              <ContactForm
+                compact
+                source="home-segment"
+                context="segment:local"
+                defaultMessage="Напишите, какой у вас бизнес (автомойка, СТО, зал, студия и т.п.), сколько у вас точек и как сейчас ведёте запись."
+              />
+            </div>
           </div>
         </div>
       </section>
