@@ -9,6 +9,34 @@ type ContactFormProps = {
   defaultMessage?: string;
 };
 
+function normalizeAndValidatePhone(raw: string): { ok: boolean; value: string; error?: string } {
+  const cleaned = raw.replace(/[^\d+]/g, ''); // убираем пробелы, скобки, тире
+
+  // Если пусто — считаем, что телефон не обязателен
+  if (!cleaned.trim()) {
+    return { ok: true, value: '' };
+  }
+
+  // Разрешаем варианты: +7XXXXXXXXXX, 8XXXXXXXXXX, 7XXXXXXXXXX
+  let digits = cleaned;
+
+  if (/^(\+7|7|8)\d{10}$/.test(digits)) {
+    // приводим к +7XXXXXXXXXX
+    if (digits.startsWith('8')) {
+      digits = '+7' + digits.slice(1);
+    } else if (digits.startsWith('7')) {
+      digits = '+7' + digits.slice(1);
+    }
+    return { ok: true, value: digits };
+  }
+
+  return {
+    ok: false,
+    value: raw,
+    error: 'Некорректный номер телефона. Укажите в формате +7 999 123-45-67.',
+  };
+}
+
 export default function ContactForm({
   compact = false,
   source,
@@ -30,6 +58,15 @@ export default function ContactForm({
     setOk(null);
     setErr(undefined);
 
+    const phoneCheck = normalizeAndValidatePhone(phone);
+
+    if (!phoneCheck.ok) {
+      setLoading(false);
+      setOk(false);
+      setErr(phoneCheck.error);
+      return;
+    }
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -37,7 +74,7 @@ export default function ContactForm({
         body: JSON.stringify({
           name,
           email,
-          phone,
+          phone: phoneCheck.value,
           message,
           website: '',
           ts,
