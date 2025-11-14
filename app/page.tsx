@@ -429,6 +429,15 @@ export default function HomePage() {
                 все записи в одном календаре. Без тетрадок, хаоса в мессенджерах
                 и пустых окон.
               </p>
+              <div className="mt-3">
+                <Link
+                  href="/services?segment=beauty"
+                  className="inline-flex items-center gap-1 text-xs font-medium text-emerald-400 hover:text-emerald-300"
+                >
+                  <span>Посмотреть услуги для салонов</span>
+                  <span>→</span>
+                </Link>
+              </div>
             </div>
             <div className="text-xs text-slate-400 max-w-xs">
               <p>
@@ -522,6 +531,15 @@ export default function HomePage() {
                 большую часть хаоса через бота: запись, напоминания, простая
                 аналитика и, при желании, предоплата.
               </p>
+              <div className="mt-3">
+                <Link
+                  href="/services?segment=local"
+                  className="inline-flex items-center gap-1 text-xs font-medium text-emerald-400 hover:text-emerald-300"
+                >
+                  <span>Посмотреть услуги для локального бизнеса</span>
+                  <span>→</span>
+                </Link>
+              </div>
             </div>
             <div className="text-xs text-slate-400 max-w-xs">
               <p>

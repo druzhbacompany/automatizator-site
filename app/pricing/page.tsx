@@ -184,7 +184,7 @@ export default function PricingPage() {
         <section className="space-y-6">
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
-              Сколько стоят маленькие задачи
+              Реализуем небольшие задачи
             </h2>
             <p className="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
               Не обязательно сразу заходить в большой пакет. Часто мы начинаем с одной–двух задач: докрутить бота,

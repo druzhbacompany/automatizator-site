@@ -1,17 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import rawServices from '@/data/services.long.json';
 
 type SegmentKey = 'edtech' | 'beauty' | 'local';
+type SegmentId = 'all' | SegmentKey;
 
 type Service = (typeof rawServices)[number] & {
   segments?: SegmentKey[];
 };
 
-const SERVICES = rawServices as Service[];
+const SERVICES: Service[] = rawServices as Service[];
 
 const SEGMENT_LABELS: Record<SegmentKey, string> = {
   edtech: 'Онлайн-школы и эксперты',
@@ -48,38 +49,30 @@ const SEGMENT_FILTERS: {
 
 export default function ServicesContent() {
   const searchParams = useSearchParams();
-  const router = useRouter();
 
-  const [activeSegment, setActiveSegment] = useState<'all' | SegmentKey>('all');
-
-  // Синхронизация state с ?segment=...
-  useEffect(() => {
-    const seg = searchParams.get('segment');
-    if (seg === 'edtech' || seg === 'beauty' || seg === 'local') {
-      setActiveSegment(seg);
-    } else {
-      setActiveSegment('all');
+  const initialSegment: SegmentId = useMemo(() => {
+    const fromUrl = searchParams.get('segment');
+    if (fromUrl === 'edtech' || fromUrl === 'beauty' || fromUrl === 'local') {
+      return fromUrl;
     }
+    return 'all';
   }, [searchParams]);
+
+  const [activeSegment, setActiveSegment] = useState<SegmentId>(initialSegment);
+
+  const filtered = useMemo(
+    () =>
+      SERVICES.filter((service) => {
+        if (activeSegment === 'all') return true;
+        if (!service.segments || service.segments.length === 0) return true; // безопасный дефолт
+        return service.segments.includes(activeSegment);
+      }),
+    [activeSegment],
+  );
 
   const handleSegmentClick = (id: 'all' | SegmentKey) => {
     setActiveSegment(id);
-
-    const params = new URLSearchParams(Array.from(searchParams.entries()));
-    if (id === 'all') {
-      params.delete('segment');
-    } else {
-      params.set('segment', id);
-    }
-    const qs = params.toString();
-    router.push(qs ? `/services?${qs}` : '/services', { scroll: false });
   };
-
-  const filtered = SERVICES.filter((service) => {
-    if (activeSegment === 'all') return true;
-    if (!service.segments || service.segments.length === 0) return true; // безопасный дефолт
-    return service.segments.includes(activeSegment);
-  });
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
@@ -144,7 +137,11 @@ export default function ServicesContent() {
             {filtered.map((service) => (
               <Link
                 key={service.slug}
-                href={`/services/${service.slug}`}
+                href={
+                  activeSegment === 'all'
+                    ? `/services/${service.slug}`
+                    : `/services/${service.slug}?segment=${activeSegment}`
+                }
                 className="group flex flex-col rounded-2xl border border-slate-800 bg-slate-950/80 p-4 transition hover:border-emerald-500/80 hover:bg-slate-900"
               >
                 {/* бейджи сегментов */}

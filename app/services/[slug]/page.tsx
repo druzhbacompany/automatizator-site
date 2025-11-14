@@ -4,6 +4,12 @@ import Link from 'next/link';
 import servicesData from '@/data/services.long.json';
 import ContactForm from '@/app/components/ContactForm';
 
+const SEGMENT_BACK_LABELS: Record<string, string> = {
+  edtech: 'Услуги для онлайн-школ и экспертов',
+  beauty: 'Услуги для салонов и студий',
+  local: 'Услуги для локального бизнеса',
+};
+
 type PricingRef = 'start' | 'grow' | 'scale';
 
 type ServiceProcessStep = {
@@ -72,13 +78,12 @@ export function generateStaticParams() {
   }));
 }
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
+type ServicePageProps = {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const service = getService(params.slug);
 
   if (!service) {
@@ -97,8 +102,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function ServicePage({ params }: PageProps) {
-  const service = getService(params.slug);
+export default function ServicePage({ params, searchParams }: ServicePageProps) {
+  const { slug } = params;
+
+  const rawSegment = searchParams?.segment;
+  const segment =
+    typeof rawSegment === 'string' && ['edtech', 'beauty', 'local'].includes(rawSegment)
+      ? rawSegment
+      : null;
+
+  const backHref = segment ? `/services?segment=${segment}` : '/services';
+  const backLabel = segment && SEGMENT_BACK_LABELS[segment] ? SEGMENT_BACK_LABELS[segment] : 'Ко всем услугам';
+
+  const service = getService(slug);
 
   if (!service) {
     return notFound();
@@ -118,26 +134,16 @@ export default function ServicePage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
-        {/* BREADCRUMBS */}
-        <nav className="text-xs text-slate-400 sm:text-sm" aria-label="Хлебные крошки">
-          <ol className="flex flex-wrap items-center gap-1.5">
-            <li>
-              <Link href="/" className="hover:text-slate-200">
-                Главная
-              </Link>
-            </li>
-            <li className="text-slate-500">/</li>
-            <li>
-              <Link href="/services" className="hover:text-slate-200">
-                Услуги
-              </Link>
-            </li>
-            <li className="text-slate-500">/</li>
-            <li className="text-slate-300">{service.title}</li>
-          </ol>
-        </nav>
-
+      <div className="max-w-5xl mx-auto px-4 pt-6 pb-10">
+        <div className="mb-6">
+          <Link
+            href={backHref}
+            className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-emerald-300"
+          >
+            <span>←</span>
+            <span>{backLabel}</span>
+          </Link>
+        </div>
         {/* HERO */}
         <section className="space-y-6">
           <div className="space-y-3">
