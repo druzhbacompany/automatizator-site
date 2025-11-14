@@ -57,20 +57,34 @@ export default function ServicesContent() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
       <div className="max-w-5xl mx-auto px-4 py-10 lg:py-14">
-        {/* заголовок страницы */}
-        <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-            Услуги и решения
-          </h1>
-          <p className="text-sm text-slate-300 max-w-2xl">
-            Сайты, боты, n8n, интеграции, парсинг и отчёты. Подбираем набор под вашу задачу:
-            онлайн-школа, салон или локальный сервис.
-          </p>
-        </header>
+        {/* ГЛАВНЫЙ БЛОК: УСЛУГИ + ФИЛЬТР ПО ТИПУ БИЗНЕСА */}
+        <section className="mb-10 rounded-3xl border border-slate-800 bg-slate-950/85 px-4 py-5 shadow-[0_18px_45px_rgba(0,0,0,0.7)] sm:px-6 sm:py-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div>
+              <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-300">
+                услуги и решения
+              </p>
+              <h1 className="mb-2 text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">
+                Услуги и решения под вашу задачу
+              </h1>
+              <p className="max-w-xl text-sm text-slate-300">
+                Сайты, боты, n8n, интеграции, парсинг и отчёты. Подбираем набор под вашу задачу:
+                онлайн-школа, салон или локальный сервис.
+              </p>
+            </div>
+            <div className="max-w-xs text-xs text-slate-400">
+              <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-300">
+                Фильтр по типу бизнеса
+              </p>
+              <p>
+                Выберите, кто вы — и список услуг подстроится под вашу ситуацию. Можно начать с{' '}
+                <span className="text-emerald-300">«Все направления»</span>, а потом сузить до
+                своего сегмента.
+              </p>
+            </div>
+          </div>
 
-        {/* ФИЛЬТРЫ ПО СЕГМЕНТАМ */}
-        <section className="mb-8">
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-3">
             {SEGMENT_FILTERS.map((seg) => {
               const isActive = seg.id === activeSegment;
               return (
@@ -79,10 +93,10 @@ export default function ServicesContent() {
                   type="button"
                   onClick={() => setActiveSegment(seg.id)}
                   className={[
-                    'inline-flex flex-col items-start justify-center rounded-2xl border px-3 py-2 text-left text-xs transition',
+                    'inline-flex flex-col items-start justify-center rounded-2xl border px-3 py-2 text-left text-xs transition sm:px-4 sm:py-3 sm:text-[13px]',
                     isActive
-                      ? 'border-emerald-500/80 bg-emerald-500/10 text-emerald-200'
-                      : 'border-slate-800 bg-slate-900/70 text-slate-300 hover:border-emerald-500/60 hover:text-emerald-200',
+                      ? 'border-emerald-400 bg-emerald-500/10 text-emerald-100 shadow shadow-emerald-500/30'
+                      : 'border-slate-700 bg-slate-900/80 text-slate-300 hover:border-emerald-400/80 hover:text-emerald-100',
                   ].join(' ')}
                 >
                   <span className="font-semibold text-[12px] mb-0.5">
@@ -122,21 +136,17 @@ export default function ServicesContent() {
                   </div>
                 )}
 
-                <h2 className="text-sm sm:text-base font-semibold text-slate-50 group-hover:text-emerald-200">
+                <h2 className="text-sm font-semibold text-slate-50 group-hover:text-emerald-200 sm:text-base">
                   {service.title}
                 </h2>
 
                 {service.short && (
-                  <p className="mt-2 text-xs sm:text-sm text-slate-300">
-                    {service.short}
-                  </p>
+                  <p className="mt-2 text-xs text-slate-300 sm:text-sm">{service.short}</p>
                 )}
 
-                <div className="mt-4 text-[12px] font-medium text-emerald-400 flex items-center gap-1">
+                <div className="mt-4 flex items-center gap-1 text-[12px] font-medium text-emerald-400">
                   <span>Подробнее об услуге</span>
-                  <span className="transition-transform group-hover:translate-x-0.5">
-                    →
-                  </span>
+                  <span className="transition-transform group-hover:translate-x-0.5">→</span>
                 </div>
               </Link>
             ))}
@@ -144,8 +154,8 @@ export default function ServicesContent() {
 
           {filtered.length === 0 && (
             <p className="mt-6 text-sm text-slate-400">
-              По выбранному сегменту пока нет отдельных услуг — выберите другой
-              фильтр или напишите нам, чтобы обсудить кастомное решение.
+              По выбранному сегменту пока нет отдельных услуг — выберите другой фильтр или напишите
+              нам, чтобы обсудить кастомное решение.
             </p>
           )}
         </section>
