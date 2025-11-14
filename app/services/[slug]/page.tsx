@@ -290,120 +290,114 @@ export default function ServicePage({ params, searchParams }: ServicePageProps) 
           </section>
         )}
 
-        {/* ИНТЕГРАЦИИ И СТЕК */}
         {hasIntegrations && (
-          <section className="space-y-3">
-            <div className="space-y-1">
-              <h2 className="text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl">
-                Интеграции и стек
-              </h2>
-              <p className="max-w-2xl text-xs leading-relaxed text-slate-300 sm:text-sm">
-                Используемые сервисы и технологии. При необходимости можем
-                адаптировать стек под ваши ограничения и уже выбранные платформы.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {service.integrations?.map((item) => (
-                <span
-                  key={item}
-                  className="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1 text-xs text-slate-200"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </section>
-        )}
+  <section className="mt-8">
+    <details className="group rounded-2xl border border-slate-800 bg-slate-900/70 px-5 py-4" open>
+      <summary className="flex cursor-pointer items-center justify-between gap-2 text-sm font-semibold text-slate-50 list-none">
+        <span>Интеграции и стек</span>
+        <span className="text-[11px] text-slate-400">
+          Нажмите, чтобы свернуть или раскрыть
+        </span>
+      </summary>
 
-        {/* КЕЙСЫ */}
+      <p className="mt-3 max-w-2xl text-xs leading-relaxed text-slate-300 sm:text-sm">
+        Используем ваши текущие сервисы и добавляем только необходимый минимум стека
+        под задачи проекта.
+      </p>
+
+      <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-200 sm:text-sm">
+        {service.integrations?.map((item) => (
+          <span
+            key={item}
+            className="inline-flex items-center rounded-full border border-slate-700 bg-slate-950/60 px-3 py-1"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </details>
+  </section>
+)}
+
         {hasCases && (
-          <section className="space-y-3">
-            <div className="space-y-1">
-              <h2 className="text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl">
-                Примеры кейсов
-              </h2>
-              <p className="max-w-2xl text-xs leading-relaxed text-slate-300 sm:text-sm">
-                Ниже — типовые сценарии, где эта услуга уже отработала. На
-                консультации можем разобрать похожий кейс под вашу нишу.
-              </p>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              {service.cases?.map((item) => (
-                <article
-                  key={item.name}
-                  className="space-y-2 rounded-2xl border border-slate-800 bg-slate-900/70 p-4"
-                >
-                  <h3 className="text-sm font-semibold text-slate-50 sm:text-base">
-                    {item.name}
-                  </h3>
-                  {item.result && (
-                    <p className="text-xs font-medium text-emerald-300 sm:text-sm">
-                      Результат: {item.result}
-                    </p>
-                  )}
-                  {item.note && (
-                    <p className="text-xs leading-relaxed text-slate-300 sm:text-sm">
-                      {item.note}
-                    </p>
-                  )}
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
+  <section className="mt-8">
+    <details className="group rounded-2xl border border-slate-800 bg-slate-900/70 px-5 py-4" open>
+      <summary className="flex cursor-pointer items-center justify-between gap-2 text-sm font-semibold text-slate-50 list-none">
+        <span>Примеры кейсов</span>
+        <span className="text-[11px] text-slate-400">
+          Нажмите, чтобы свернуть или раскрыть
+        </span>
+      </summary>
 
-        {/* РИСКИ И ОГРАНИЧЕНИЯ */}
+      <div className="mt-4 grid gap-3 text-xs sm:text-sm md:grid-cols-2">
+        {service.cases?.map((c) => (
+          <div
+            key={c.name}
+            className="rounded-xl border border-slate-800 bg-slate-950/50 p-4"
+          >
+            <p className="font-semibold text-slate-50">{c.name}</p>
+            {c.result && (
+              <p className="mt-2 text-slate-300">{c.result}</p>
+            )}
+            {c.note && (
+              <p className="mt-1 text-[11px] text-slate-400">{c.note}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    </details>
+  </section>
+)}
+
         {hasRisks && (
-          <section className="space-y-3">
-            <div className="space-y-1">
-              <h2 className="text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl">
-                Риски и ограничения
-              </h2>
-              <p className="max-w-2xl text-xs leading-relaxed text-slate-300 sm:text-sm">
-                Честно проговариваем, от чего зависит результат и что может
-                пойти не по плану — ещё до старта проекта, а не по факту.
-              </p>
-            </div>
-            <ul className="space-y-2.5 rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-xs text-slate-200 sm:text-sm">
-              {service.risks?.map((item) => (
-                <li key={item} className="flex gap-2">
-                  <span className="mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-400" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+  <section className="mt-8">
+    <details className="group rounded-2xl border border-slate-800 bg-slate-900/70 px-5 pt-5 pb-8">
+      <summary className="relative flex cursor-pointer items-center justify-between gap-2 pb-6 text-sm font-semibold text-slate-50 list-none">
+        <span>Риски и ограничения</span>
 
-        {/* FAQ */}
+        <span className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-100/80 bg-slate-950 text-xl leading-none text-slate-50 shadow-sm transition group-open:rotate-45">
+            +
+          </span>
+        </span>
+      </summary>
+
+      <ul className="mt-4 space-y-2.5 text-xs text-slate-200 sm:text-sm">
+        {service.risks?.map((item) => (
+          <li key={item} className="flex gap-2">
+            <span className="mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-red-500/70" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </details>
+  </section>
+)}
+
         {hasFaq && (
-          <section className="space-y-3">
-            <div className="space-y-1">
-              <h2 className="text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl">
-                Частые вопросы по этой услуге
-              </h2>
-              <p className="max-w-2xl text-xs leading-relaxed text-slate-300 sm:text-sm">
-                Короткие ответы на вопросы, которые чаще всего возникают перед
-                стартом. Остальное можно разобрать точечно на созвоне.
-              </p>
-            </div>
-            <div className="space-y-3">
-              {service.faq?.map((item) => (
-                <div
-                  key={item.q}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4"
-                >
-                  <h3 className="text-sm font-semibold text-slate-50 sm:text-base">
-                    {item.q}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-300 sm:text-sm">
-                    {item.a}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
+  <section className="mt-8">
+    <details className="group rounded-2xl border border-slate-800 bg-slate-900/70 px-5 py-4">
+      <summary className="flex cursor-pointer items-center justify-between gap-2 text-sm font-semibold text-slate-50 list-none">
+        <span>Частые вопросы по этой услуге</span>
+        <span className="text-[11px] text-slate-400">
+          Нажмите, чтобы раскрыть
+        </span>
+      </summary>
+
+      <div className="mt-4 space-y-3 text-xs sm:text-sm">
+        {service.faq?.map((item) => (
+          <div
+            key={item.q}
+            className="rounded-xl border border-slate-800 bg-slate-950/40 p-3 sm:p-4"
+          >
+            <p className="font-medium text-slate-50">{item.q}</p>
+            <p className="mt-1 text-slate-300">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </details>
+  </section>
+)}
 
         {/* CTA + форма заявки по услуге */}
         <section
