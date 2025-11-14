@@ -99,7 +99,12 @@
         "автоматизация заявок через telegram",
         "создание telegram-бота под ключ"
       ]
-    }
+    },
+    "segments": [
+      "edtech",
+      "beauty",
+      "local"
+    ]
   },
   {
     "slug": "n8n-automations",
@@ -201,7 +206,11 @@
         "интеграции getcourse и crm",
         "интеграция сервисов через n8n"
       ]
-    }
+    },
+    "segments": [
+      "edtech",
+      "local"
+    ]
   },
   {
     "slug": "integrations-getcourse-salebot-bizon-vakas",
@@ -308,7 +317,10 @@
         "связка getcourse salebot bizon",
         "сквозная аналитика для онлайн курсов"
       ]
-    }
+    },
+    "segments": [
+      "edtech"
+    ]
   },
   {
     "slug": "web-parsing-csv",
@@ -387,7 +399,11 @@
         "скрейпинг",
         "каталог товаров"
       ]
-    }
+    },
+    "segments": [
+      "edtech",
+      "local"
+    ]
   },
   {
     "slug": "nextjs-landing",
@@ -465,7 +481,12 @@
         "скоростной лендинг",
         "интеграции"
       ]
-    }
+    },
+    "segments": [
+      "edtech",
+      "beauty",
+      "local"
+    ]
   },
   {
     "slug": "woocommerce-catalog-csv",
@@ -540,7 +561,10 @@
         "каталог товаров",
         "WordPress магазин"
       ]
-    }
+    },
+    "segments": [
+      "local"
+    ]
   },
   {
     "slug": "reports-dashboards",
@@ -617,7 +641,12 @@
         "аналитика продаж",
         "метрики"
       ]
-    }
+    },
+    "segments": [
+      "edtech",
+      "beauty",
+      "local"
+    ]
   },
   {
     "slug": "audit-automation-stack",
@@ -714,7 +743,12 @@
         "проверка интеграций",
         "аудит стека онлайн школы"
       ]
-    }
+    },
+    "segments": [
+      "edtech",
+      "beauty",
+      "local"
+    ]
   },
   {
     "slug": "support-automation-retainer",
@@ -808,7 +842,12 @@
         "обслуживание интеграций",
         "ежемесячная поддержка онлайн школы"
       ]
-    }
+    },
+    "segments": [
+      "edtech",
+      "beauty",
+      "local"
+    ]
   },
   {
     "slug": "mini-apps-and-widgets",
@@ -909,6 +948,11 @@
         "интерактивный опрос для онлайн школы",
         "калькулятор для лидогенерации"
       ]
-    }
+    },
+    "segments": [
+      "edtech",
+      "beauty",
+      "local"
+    ]
   }
 ]
