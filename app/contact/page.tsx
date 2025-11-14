@@ -22,7 +22,11 @@ export default function ContactPage(){
       <section className="container py-14">
         <h1 className="text-4xl md:text-5xl font-black mb-4">Связаться</h1>
         <p className="text-muted mb-8 max-w-2xl">Заполните форму — заявка улетит в Telegram и (если настроено) в CRM.</p>
-        <ContactForm />
+        <ContactForm
+          source="contact-page"
+          context="contact:main-form"
+          defaultMessage="Кратко опишите задачу и с какими сервисами вы уже работаете: боты, платформы, n8n, CRM, парсеры и т.п."
+        />
       </section>
       <footer className="border-t border-[#20242e] mt-16">
         <div className="container py-8 small">© {new Date().getFullYear()} Automatizator</div>
