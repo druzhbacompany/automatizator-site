@@ -147,14 +147,19 @@ export default function ServicesContent() {
                 {/* бейджи сегментов */}
                 {service.segments && service.segments.length > 0 && (
                   <div className="mb-2 flex flex-wrap gap-1">
-                    {service.segments.map((seg) => (
-                      <span
-                        key={seg}
-                        className="inline-flex items-center rounded-full border border-slate-700 bg-slate-900 px-2 py-0.5 text-[10px] uppercase tracking-wide text-slate-400"
-                      >
-                        {SEGMENT_LABELS[seg]}
-                      </span>
-                    ))}
+                    {service.segments.map((seg) => {
+                      const key = seg as SegmentKey;
+                      const label = SEGMENT_LABELS[key] ?? 'Для разных сегментов';
+
+                      return (
+                        <span
+                          key={key}
+                          className="inline-flex items-center rounded-full border border-slate-700 bg-slate-900 px-2 py-0.5 text-[10px] uppercase tracking-wide text-slate-400"
+                        >
+                          {label}
+                        </span>
+                      );
+                    })}
                   </div>
                 )}
 
@@ -162,8 +167,8 @@ export default function ServicesContent() {
                   {service.title}
                 </h2>
 
-                {service.short && (
-                  <p className="mt-2 text-xs text-slate-300 sm:text-sm">{service.short}</p>
+                {service.lead && (
+                  <p className="mt-2 text-xs text-slate-300 sm:text-sm">{service.lead}</p>
                 )}
 
                 <div className="mt-4 flex items-center gap-1 text-[12px] font-medium text-emerald-400">

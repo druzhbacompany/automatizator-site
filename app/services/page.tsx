@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import ServicesContent from './ServicesContent';
 
 export const metadata: Metadata = {
@@ -8,5 +9,16 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  return <ServicesContent />;
+  // Оборачиваем в Suspense, так как ServicesContent использует useSearchParams()
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-slate-950 text-slate-50">
+          <div className="max-w-5xl mx-auto px-4 py-10 lg:py-14">Загрузка услуг...</div>
+        </div>
+      }
+    >
+      <ServicesContent />
+    </Suspense>
+  );
 }
