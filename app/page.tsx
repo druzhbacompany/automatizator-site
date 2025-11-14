@@ -387,7 +387,18 @@ export default function HomePage() {
                 потом расширение.
               </p>
             </div>
-            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 md:p-5">
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 md:p-5 space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="text-[11px] text-slate-400">
+                  Можно сразу посмотреть, какие услуги чаще всего собираем для онлайн-школ.
+                </p>
+                <Link
+                  href="/services?segment=edtech"
+                  className="whitespace-nowrap text-[11px] font-medium text-emerald-400 hover:text-emerald-300"
+                >
+                  Услуги для онлайн-школ →
+                </Link>
+              </div>
               <ContactForm
                 compact
                 source="home-segment"
@@ -469,7 +480,18 @@ export default function HomePage() {
                 и понятных правил работы.
               </p>
             </div>
-            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 md:p-5">
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 md:p-5 space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="text-[11px] text-slate-400">
+                  Хотите посмотреть, какие услуги чаще всего собираем для салонов?
+                </p>
+                <Link
+                  href="/services?segment=beauty"
+                  className="whitespace-nowrap text-[11px] font-medium text-emerald-400 hover:text-emerald-300"
+                >
+                  Услуги для салонов →
+                </Link>
+              </div>
               <ContactForm
                 compact
                 source="home-segment"
@@ -552,7 +574,18 @@ export default function HomePage() {
                 или только зал, а дальше масштабировать на другие услуги.
               </p>
             </div>
-            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 md:p-5">
+            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 md:p-5 space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="text-[11px] text-slate-400">
+                  Можно посмотреть, какие услуги обычно собираем для локального бизнеса.
+                </p>
+                <Link
+                  href="/services?segment=local"
+                  className="whitespace-nowrap text-[11px] font-medium text-emerald-400 hover:text-emerald-300"
+                >
+                  Услуги для локального бизнеса →
+                </Link>
+              </div>
               <ContactForm
                 compact
                 source="home-segment"

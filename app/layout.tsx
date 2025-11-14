@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <header className="border-b border-[#20242e] sticky top-0 backdrop-blur supports-[backdrop-filter]:bg-[#0b0b0cb3]">
           <div className="container flex items-center justify-between py-4">
-            <div className="font-black tracking-tight text-xl">Automatizator</div>
+            <Link href="/" className="font-black tracking-tight text-xl">Automatizator</Link>
             <nav className="flex items-center gap-6 text-sm text-muted">
               <a href="/services" className="hover:text-white">
                 Услуги

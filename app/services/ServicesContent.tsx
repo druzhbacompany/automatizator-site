@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 import rawServices from '@/data/services.long.json';
 
 type SegmentKey = 'edtech' | 'beauty' | 'local';
@@ -46,11 +47,37 @@ const SEGMENT_FILTERS: {
 ];
 
 export default function ServicesContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   const [activeSegment, setActiveSegment] = useState<'all' | SegmentKey>('all');
+
+  // Синхронизация state с ?segment=...
+  useEffect(() => {
+    const seg = searchParams.get('segment');
+    if (seg === 'edtech' || seg === 'beauty' || seg === 'local') {
+      setActiveSegment(seg);
+    } else {
+      setActiveSegment('all');
+    }
+  }, [searchParams]);
+
+  const handleSegmentClick = (id: 'all' | SegmentKey) => {
+    setActiveSegment(id);
+
+    const params = new URLSearchParams(Array.from(searchParams.entries()));
+    if (id === 'all') {
+      params.delete('segment');
+    } else {
+      params.set('segment', id);
+    }
+    const qs = params.toString();
+    router.push(qs ? `/services?${qs}` : '/services', { scroll: false });
+  };
 
   const filtered = SERVICES.filter((service) => {
     if (activeSegment === 'all') return true;
-    if (!service.segments || service.segments.length === 0) return true; // безопасный дефолт — не прячем
+    if (!service.segments || service.segments.length === 0) return true; // безопасный дефолт
     return service.segments.includes(activeSegment);
   });
 
@@ -91,7 +118,7 @@ export default function ServicesContent() {
                 <button
                   key={seg.id}
                   type="button"
-                  onClick={() => setActiveSegment(seg.id)}
+                  onClick={() => handleSegmentClick(seg.id)}
                   className={[
                     'inline-flex flex-col items-start justify-center rounded-2xl border px-3 py-2 text-left text-xs transition sm:px-4 sm:py-3 sm:text-[13px]',
                     isActive
@@ -99,13 +126,11 @@ export default function ServicesContent() {
                       : 'border-slate-700 bg-slate-900/80 text-slate-300 hover:border-emerald-400/80 hover:text-emerald-100',
                   ].join(' ')}
                 >
-                  <span className="font-semibold text-[12px] mb-0.5">
+                  <span className="mb-0.5 text-[12px] font-semibold sm:text-[13px]">
                     {seg.label}
                   </span>
                   {seg.description && (
-                    <span className="text-[11px] text-slate-400">
-                      {seg.description}
-                    </span>
+                    <span className="text-[11px] text-slate-400">{seg.description}</span>
                   )}
                 </button>
               );
