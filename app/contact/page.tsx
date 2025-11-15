@@ -5,12 +5,6 @@ export const metadata = {
   description: 'Оставьте заявку — ответим в этот же день.',
 };
 
-const PLAN_LABELS: Record<string, string> = {
-  start: 'Пакет START',
-  grow: 'Пакет GROW',
-  scale: 'Пакет SCALE',
-};
-
 type ContactPageProps = {
   searchParams?: {
     plan?: string;
@@ -18,7 +12,11 @@ type ContactPageProps = {
 };
 
 export default function ContactPage({ searchParams }: ContactPageProps) {
-  const selectedPlan = searchParams?.plan;
+  const rawPlan = searchParams?.plan;
+  const initialPlan =
+    typeof rawPlan === 'string' && rawPlan.trim().length > 0
+      ? rawPlan.trim()
+      : undefined;
 
   return (
     <main>
@@ -33,26 +31,15 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
           </nav>
         </div>
       </section>
-      <section className="container py-14">
+      <section id="contact-form" className="container py-14">
         <h1 className="text-4xl md:text-5xl font-black mb-4">Связаться</h1>
         <p className="text-muted mb-8 max-w-2xl">Заполните форму — заявка улетит в Telegram и (если настроено) в CRM.</p>
-
-        {selectedPlan && PLAN_LABELS[selectedPlan] && (
-          <section className="mb-4 rounded-2xl border border-emerald-500/40 bg-emerald-500/5 p-4 text-sm text-emerald-100">
-            <p className="font-semibold">
-              Вы выбрали: {PLAN_LABELS[selectedPlan]}
-            </p>
-            <p className="mt-1 opacity-80">
-              Мы сразу учтём это при разборе заявки. Если вам нужен другой пакет — просто укажите об этом в сообщении.
-            </p>
-          </section>
-        )}
 
         <ContactForm
           source="contact-page"
           context="contact:main-form"
           defaultMessage="Кратко опишите задачу и с какими сервисами вы уже работаете: боты, платформы, n8n, CRM, парсеры и т.п."
-          initialPlan={selectedPlan}
+          initialPlan={initialPlan}
         />
       </section>
       <footer className="border-t border-[#20242e] mt-16">

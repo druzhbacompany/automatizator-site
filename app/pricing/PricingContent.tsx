@@ -126,7 +126,7 @@ export default function PricingContent() {
                   <p>Не входит: сложные интеграции и кастомная разработка — только типовой стек.</p>
                 </div>
                 <a
-                  href="/contact?plan=start"
+                  href="/contacts?plan=Пакет%20START%20(базовая%20автоматизация)"
                   className="mt-4 inline-flex items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400 transition"
                 >
                   Заказать пакет START
@@ -168,7 +168,7 @@ export default function PricingContent() {
                   <p>При нарушении SLA — скидки или дополнительные часы работ по договорённости.</p>
                 </div>
                 <a
-                  href="/contact?plan=grow"
+                  href="/contacts?plan=Пакет%20GROW%20(рост%20и%20систематизация)"
                   className="mt-4 inline-flex items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400 transition"
                 >
                   Заказать пакет GROW
@@ -211,7 +211,7 @@ export default function PricingContent() {
                   <p>Uptime до 99.9% (без учёта отказов платформ), приоритетный канал связи и on-call по критичным инцидентам.</p>
                 </div>
                 <a
-                  href="/contact?plan=scale"
+                  href="/contacts?plan=Пакет%20SCALE%20(масштабирование,%20сети)"
                   className="mt-4 inline-flex items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400 transition"
                 >
                   Заказать пакет SCALE

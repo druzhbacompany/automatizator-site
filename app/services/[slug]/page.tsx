@@ -194,12 +194,12 @@ export default function ServicePage({ params, searchParams }: ServicePageProps) 
               Внизу страницы — кейсы, риски и FAQ. Можно сразу перейти к
               заявке, если формат подходит.
             </p>
-            <a
-              href="#service-cta"
+            <Link
+              href={`/contacts?plan=${encodeURIComponent(service.title)}`}
               className="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400 sm:text-sm"
             >
               Обсудить эту услугу
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -214,13 +214,22 @@ export default function ServicePage({ params, searchParams }: ServicePageProps) 
             <p className="mt-2 text-sm text-slate-300">
               {PRICING_LABELS[service.pricingRef].description}
             </p>
-            <div className="mt-4">
+            <div className="mt-4 flex gap-3 flex-wrap">
               <a
                 href={PRICING_LABELS[service.pricingRef].href}
                 className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400 transition"
               >
                 Посмотреть детали пакета
               </a>
+
+              <Link
+                href={`/contacts?plan=${encodeURIComponent(
+                  `${PRICING_LABELS[service.pricingRef].name} для услуги "${service.title}"`
+                )}`}
+                className="inline-flex items-center justify-center rounded-full border border-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-300 hover:bg-emerald-500 hover:text-slate-900 transition"
+              >
+                Обсудить этот пакет
+              </Link>
             </div>
           </section>
         )}

@@ -49,7 +49,12 @@ export default function ContactForm({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState(defaultMessage ?? '');
+  const [message, setMessage] = useState(() => {
+    if (initialPlan) {
+      return `Хочу обсудить: ${initialPlan}\n\n`;
+    }
+    return defaultMessage ?? '';
+  });
   const [loading, setLoading] = useState(false);
   const [ok, setOk] = useState<boolean | null>(null);
   const [err, setErr] = useState<string | undefined>(undefined);
@@ -119,7 +124,10 @@ export default function ContactForm({
         />
 
         {initialPlan && (
-          <input type="hidden" name="plan" value={initialPlan ?? ''} />
+          <div className="mb-4 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-100">
+            <div className="font-semibold text-emerald-300">Вы выбрали:</div>
+            <div className="text-emerald-100">{initialPlan}</div>
+          </div>
         )}
 
         <input
