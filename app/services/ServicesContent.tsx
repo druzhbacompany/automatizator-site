@@ -8,11 +8,9 @@ import rawServices from '@/data/services.long.json';
 type SegmentKey = 'edtech' | 'beauty' | 'local';
 type SegmentId = 'all' | SegmentKey;
 
-type Service = (typeof rawServices)[number] & {
-  segments?: SegmentKey[];
-};
+type RawService = (typeof rawServices)[number];
 
-const SERVICES: Service[] = rawServices as Service[];
+const SERVICES: RawService[] = rawServices as RawService[];
 
 const SEGMENT_LABELS: Record<SegmentKey, string> = {
   edtech: 'Онлайн-школы и эксперты',
@@ -61,13 +59,16 @@ export default function ServicesContent() {
   const [activeSegment, setActiveSegment] = useState<SegmentId>(initialSegment);
 
   const filtered = useMemo(
-    () =>
-      SERVICES.filter((service) => {
-        if (activeSegment === 'all') return true;
-        if (!service.segments || service.segments.length === 0) return true; // безопасный дефолт
-        return service.segments.includes(activeSegment);
-      }),
-    [activeSegment],
+    () => {
+      if (activeSegment === 'all') {
+        return SERVICES;
+      }
+      return SERVICES.filter(
+        (service) =>
+          service.segments && service.segments.includes(activeSegment)
+      );
+    },
+    [activeSegment]
   );
 
   const handleSegmentClick = (id: 'all' | SegmentKey) => {

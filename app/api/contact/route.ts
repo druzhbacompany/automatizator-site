@@ -9,6 +9,7 @@ type ContactPayload = {
   ts?: number;
   source?: string;
   context?: string;
+  plan?: string;
 };
 
 export async function POST(req: NextRequest) {
@@ -35,6 +36,7 @@ export async function POST(req: NextRequest) {
       ts: body.ts,
       source: body.source,
       context: body.context,
+      plan: body.plan,
     });
 
     // TODO: сюда позже добавим отправку в Telegram / CRM / почту

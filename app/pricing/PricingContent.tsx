@@ -93,7 +93,7 @@ export default function PricingContent() {
 
             <div className="grid gap-6 md:grid-cols-3">
               {/* START */}
-              <div className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+              <div id="start" className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
                 <div className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-emerald-300">
                   START
                   <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-400">
@@ -125,17 +125,16 @@ export default function PricingContent() {
                 <div className="mt-4 space-y-1 text-xs text-slate-400">
                   <p>Не входит: сложные интеграции и кастомная разработка — только типовой стек.</p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => openPackage('start')}
-                  className="mt-4 w-full rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
+                <a
+                  href="/contact?plan=start"
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400 transition"
                 >
-                  Обсудить этот пакет
-                </button>
+                  Заказать пакет START
+                </a>
               </div>
 
               {/* GROW */}
-              <div className="flex flex-col rounded-2xl border border-emerald-500 bg-slate-900/80 p-5 shadow-[0_0_0_1px_rgba(16,185,129,0.35)]">
+              <div id="grow" className="flex flex-col rounded-2xl border border-emerald-500 bg-slate-900/80 p-5 shadow-[0_0_0_1px_rgba(16,185,129,0.35)]">
                 <div className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-emerald-300">
                   GROW
                   <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-400">
@@ -168,17 +167,16 @@ export default function PricingContent() {
                   <p>СLA: ответ до 2 часов (24/7), исправление типовых инцидентов до 12 часов, Uptime 99.5%+.</p>
                   <p>При нарушении SLA — скидки или дополнительные часы работ по договорённости.</p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => openPackage('grow')}
-                  className="mt-4 w-full rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
+                <a
+                  href="/contact?plan=grow"
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400 transition"
                 >
-                  Обсудить этот пакет
-                </button>
+                  Заказать пакет GROW
+                </a>
               </div>
 
               {/* SCALE */}
-              <div className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+              <div id="scale" className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
                 <div className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-emerald-300">
                   SCALE
                   <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-400">
@@ -212,13 +210,12 @@ export default function PricingContent() {
                 <div className="mt-4 space-y-1 text-xs text-slate-400">
                   <p>Uptime до 99.9% (без учёта отказов платформ), приоритетный канал связи и on-call по критичным инцидентам.</p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => openPackage('scale')}
-                  className="mt-4 w-full rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
+                <a
+                  href="/contact?plan=scale"
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400 transition"
                 >
-                  Обсудить этот пакет
-                </button>
+                  Заказать пакет SCALE
+                </a>
               </div>
             </div>
           </section>

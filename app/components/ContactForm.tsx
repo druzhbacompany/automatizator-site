@@ -7,6 +7,7 @@ type ContactFormProps = {
   source?: string;
   context?: string;
   defaultMessage?: string;
+  initialPlan?: string;
 };
 
 function normalizeAndValidatePhone(raw: string): { ok: boolean; value: string; error?: string } {
@@ -42,6 +43,7 @@ export default function ContactForm({
   source,
   context,
   defaultMessage,
+  initialPlan,
 }: ContactFormProps) {
   const [ts] = useState(() => Date.now());
   const [name, setName] = useState('');
@@ -80,6 +82,7 @@ export default function ContactForm({
           ts,
           source,
           context,
+          plan: initialPlan,
         }),
       });
 
@@ -114,6 +117,10 @@ export default function ContactForm({
           className="hidden"
           aria-hidden="true"
         />
+
+        {initialPlan && (
+          <input type="hidden" name="plan" value={initialPlan ?? ''} />
+        )}
 
         <input
           className="input"

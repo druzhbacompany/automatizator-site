@@ -69,6 +69,24 @@ const pricingLabel: Record<PricingRef, { label: string; hint: string }> = {
   },
 };
 
+const PRICING_LABELS = {
+  start: {
+    name: 'Пакет START',
+    description: 'Базовый пакет для небольших проектов и пилотов.',
+    href: '/pricing#start',
+  },
+  grow: {
+    name: 'Пакет GROW',
+    description: 'Пакет для растущих проектов с устойчивым потоком заявок.',
+    href: '/pricing#grow',
+  },
+  scale: {
+    name: 'Пакет SCALE',
+    description: 'Решения для масштабирования и сетевых клиентов.',
+    href: '/pricing#scale',
+  },
+} as const;
+
 function getService(slug: string): Service | undefined {
   return services.find((service) => service.slug === slug);
 }
@@ -184,6 +202,28 @@ export default function ServicePage({ params, searchParams }: ServicePageProps) 
             </a>
           </div>
         </section>
+
+        {service.pricingRef && PRICING_LABELS[service.pricingRef] && (
+          <section className="mt-6 rounded-2xl border border-slate-800 bg-slate-900/60 p-5 md:p-6">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
+              Рекомендуемый пакет
+            </h2>
+            <p className="mt-1 text-lg font-semibold text-slate-50">
+              {PRICING_LABELS[service.pricingRef].name}
+            </p>
+            <p className="mt-2 text-sm text-slate-300">
+              {PRICING_LABELS[service.pricingRef].description}
+            </p>
+            <div className="mt-4">
+              <a
+                href={PRICING_LABELS[service.pricingRef].href}
+                className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400 transition"
+              >
+                Посмотреть детали пакета
+              </a>
+            </div>
+          </section>
+        )}
 
         {/* «ДЛЯ КОГО» + «ЧТО МЕНЯЕТСЯ» */}
         {(hasWho || hasBenefits) && (

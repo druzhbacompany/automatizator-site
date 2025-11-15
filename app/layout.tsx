@@ -26,6 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/pricing" className="hover:text-white">
                 Цены и SLA
               </Link>
+              <Link href="/approach" className="hover:text-white">
+                Подход
+              </Link>
               <Link href="/#faq" className="hover:text-white">
                 FAQ
               </Link>
