@@ -195,7 +195,7 @@ export default function ServicePage({ params, searchParams }: ServicePageProps) 
               заявке, если формат подходит.
             </p>
             <Link
-              href={`/contacts?plan=${encodeURIComponent(service.title)}`}
+              href={`/contact?plan=${encodeURIComponent(service.title)}`}
               className="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400 sm:text-sm"
             >
               Обсудить эту услугу
@@ -223,7 +223,7 @@ export default function ServicePage({ params, searchParams }: ServicePageProps) 
               </a>
 
               <Link
-                href={`/contacts?plan=${encodeURIComponent(
+                href={`/contact?plan=${encodeURIComponent(
                   `${PRICING_LABELS[service.pricingRef].name} для услуги "${service.title}"`
                 )}`}
                 className="inline-flex items-center justify-center rounded-full border border-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-300 hover:bg-emerald-500 hover:text-slate-900 transition"
