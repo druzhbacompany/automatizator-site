@@ -8,13 +8,36 @@ export const metadata: Metadata = {
     'Статьи про автоматизацию, Telegram-ботов, n8n и системный подход к процессам без магии и воды.',
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+type BlogPageProps = {
+  searchParams?: {
+    q?: string;
+  };
+};
+
+export default function BlogPage({ searchParams }: BlogPageProps) {
+  const rawQuery = typeof searchParams?.q === 'string' ? searchParams.q : '';
+  const query = rawQuery.trim();
+
+  const allPosts = getAllPosts();
+
+  const posts = query
+    ? allPosts.filter((post) => {
+        const haystack = (
+          post.title +
+          ' ' +
+          post.excerpt +
+          ' ' +
+          (post.tags?.join(' ') ?? '')
+        ).toLowerCase();
+
+        return haystack.includes(query.toLowerCase());
+      })
+    : allPosts;
 
   return (
     <main className="py-12 lg:py-16">
       <section className="max-w-5xl mx-auto px-4">
-        <header className="mb-10">
+        <header className="mb-6">
           <p className="text-[11px] uppercase tracking-[0.25em] text-emerald-400 mb-2">
             БЛОГ
           </p>
@@ -22,14 +45,41 @@ export default function BlogPage() {
             Блог про автоматизацию и ботов без магической кнопки
           </h1>
           <p className="text-sm text-slate-300 max-w-2xl">
-            Разбираем реальные кейсы, MVP-подход к ботам и автоматизации, ошибки, которые
-            мы видели у клиентов, и что с этим делать на практике.
+            Разбираем реальные кейсы, MVP-подход к ботам и автоматизации, ошибки,
+            которые мы видели у клиентов, и что с этим делать на практике.
           </p>
         </header>
 
+        {/* Поиск под шапкой */}
+        <form className="mb-6 max-w-md" action="/blog" method="get">
+          <label
+            htmlFor="q"
+            className="block text-xs font-medium text-slate-400 mb-1"
+          >
+            Поиск по статьям
+          </label>
+          <div className="relative">
+            <input
+              id="q"
+              name="q"
+              defaultValue={query}
+              placeholder="Введите слово или фразу..."
+              className="w-full rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            />
+          </div>
+        </form>
+
+        {query && (
+          <p className="mb-4 text-xs text-slate-400">
+            Найдено статей: <span className="font-semibold">{posts.length}</span>
+          </p>
+        )}
+
         {posts.length === 0 ? (
           <p className="text-slate-400 text-sm">
-            Здесь пока нет опубликованных статей. Скоро появятся первые разборы.
+            {query
+              ? <>По запросу «{query}» ничего не найдено.</>
+              : 'Здесь пока нет опубликованных статей. Скоро появятся первые разборы.'}
           </p>
         ) : (
           <div className="space-y-6">
