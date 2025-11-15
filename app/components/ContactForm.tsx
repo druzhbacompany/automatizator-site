@@ -13,16 +13,13 @@ type ContactFormProps = {
 function normalizeAndValidatePhone(raw: string): { ok: boolean; value: string; error?: string } {
   const cleaned = raw.replace(/[^\d+]/g, ''); // убираем пробелы, скобки, тире
 
-  // Если пусто — считаем, что телефон не обязателен
   if (!cleaned.trim()) {
     return { ok: true, value: '' };
   }
 
-  // Разрешаем варианты: +7XXXXXXXXXX, 8XXXXXXXXXX, 7XXXXXXXXXX
   let digits = cleaned;
 
   if (/^(\+7|7|8)\d{10}$/.test(digits)) {
-    // приводим к +7XXXXXXXXXX
     if (digits.startsWith('8')) {
       digits = '+7' + digits.slice(1);
     } else if (digits.startsWith('7')) {
@@ -49,15 +46,12 @@ export default function ContactForm({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState(() => {
-    if (initialPlan) {
-      return `Хочу обсудить: ${initialPlan}\n\n`;
-    }
-    return defaultMessage ?? '';
-  });
+  const [message, setMessage] = useState(defaultMessage ?? '');
   const [loading, setLoading] = useState(false);
   const [ok, setOk] = useState<boolean | null>(null);
   const [err, setErr] = useState<string | undefined>(undefined);
+
+  const plan = initialPlan;
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -74,6 +68,11 @@ export default function ContactForm({
       return;
     }
 
+    const fullMessage =
+      plan && message && !message.includes(plan)
+        ? `План: ${plan}\n\n${message}`
+        : message || `План: ${plan}`;
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -82,12 +81,12 @@ export default function ContactForm({
           name,
           email,
           phone: phoneCheck.value,
-          message,
+          message: fullMessage,
           website: '',
           ts,
           source,
           context,
-          plan: initialPlan,
+          plan,
         }),
       });
 
@@ -123,13 +122,6 @@ export default function ContactForm({
           aria-hidden="true"
         />
 
-        {initialPlan && (
-          <div className="mb-4 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-100">
-            <div className="font-semibold text-emerald-300">Вы выбрали:</div>
-            <div className="text-emerald-100">{initialPlan}</div>
-          </div>
-        )}
-
         <input
           className="input"
           placeholder="Имя *"
@@ -163,6 +155,12 @@ export default function ContactForm({
           required
         />
       </div>
+
+      {plan && (
+        <p className="mb-2 text-xs text-slate-400">
+          В заявке будет указано: <span className="font-semibold">{plan}</span>
+        </p>
+      )}
 
       <button disabled={loading} className="btn">
         {loading ? 'Отправка…' : 'Отправить'}

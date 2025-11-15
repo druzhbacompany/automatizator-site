@@ -1,22 +1,18 @@
+import { Metadata } from 'next';
 import ContactForm from '@/app/components/ContactForm';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Связаться — Automatizator',
   description: 'Оставьте заявку — ответим в этот же день.',
 };
 
 type ContactPageProps = {
-  searchParams?: {
-    plan?: string;
-  };
+  searchParams?: { plan?: string };
 };
 
 export default function ContactPage({ searchParams }: ContactPageProps) {
-  const rawPlan = searchParams?.plan;
-  const initialPlan =
-    typeof rawPlan === 'string' && rawPlan.trim().length > 0
-      ? rawPlan.trim()
-      : undefined;
+  const rawPlan = typeof searchParams?.plan === 'string' ? searchParams.plan : undefined;
+  const decodedPlan = rawPlan ? decodeURIComponent(rawPlan) : undefined;
 
   return (
     <main>
@@ -35,11 +31,17 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
         <h1 className="text-4xl md:text-5xl font-black mb-4">Связаться</h1>
         <p className="text-muted mb-8 max-w-2xl">Заполните форму — заявка улетит в Telegram и (если настроено) в CRM.</p>
 
+        {decodedPlan && (
+          <div className="mb-4 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-3">
+            <div className="font-semibold text-emerald-300">Вы выбрали:</div>
+            <div className="mt-1 text-emerald-100">{decodedPlan}</div>
+          </div>
+        )}
+
         <ContactForm
           source="contact-page"
           context="contact:main-form"
-          defaultMessage="Кратко опишите задачу и с какими сервисами вы уже работаете: боты, платформы, n8n, CRM, парсеры и т.п."
-          initialPlan={initialPlan}
+          initialPlan={decodedPlan}
         />
       </section>
       <footer className="border-t border-[#20242e] mt-16">
