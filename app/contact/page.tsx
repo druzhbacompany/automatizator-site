@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import ContactForm from '@/app/components/ContactForm';
 
 export const metadata: Metadata = {
@@ -28,6 +29,20 @@ export default function ContactPage({ searchParams }: ContactPageProps) {
               Разберём, где техника сейчас ломает ваши запуски и ежедневную работу:
               боты, воронки, CRM, n8n-сценарии. Покажем, какие риски вы реально несёте
               в день старта и что можно привести в порядок за ближайшие 7–10 дней.
+            </p>
+            <p className="mt-3 text-[11px] text-emerald-300/90 max-w-2xl">
+              Не обязательно сразу заходить с большим проектом — можно описать одну небольшую задачу
+              или техсбой, который мешает работать спокойно. На консультации мы разберём ситуацию
+              и честно скажем, имеет ли смысл сделать это как разовую работу или лучше сразу заложить
+              основу под систему.
+              {' '}
+              <Link
+                href="/pricing#small-tasks"
+                className="underline underline-offset-2 decoration-emerald-400/70 hover:decoration-emerald-300"
+              >
+                Посмотреть формат небольших задач
+              </Link>
+              .
             </p>
           </header>
 

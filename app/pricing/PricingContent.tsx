@@ -17,6 +17,17 @@ export default function PricingContent() {
         разный уровень риска, нагрузки и контроля, а не просто разный ценник.
       </p>
 
+      <p className="mt-3 text-[11px] text-emerald-300/90">
+        Не уверены, что вам нужен пакет?{' '}
+        <a
+          href="#small-tasks"
+          className="underline underline-offset-2 decoration-emerald-400/70 hover:decoration-emerald-300"
+        >
+          Начните с небольшой задачи
+        </a>
+        .
+      </p>
+
       <div className="grid gap-4 md:grid-cols-3">
         {/* START */}
         <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 flex flex-col">
@@ -114,6 +125,75 @@ export default function PricingContent() {
           </Link>
         </article>
       </div>
+
+      <section
+        id="small-tasks"
+        className="mt-10 space-y-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-5"
+      >
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-300">
+          Если нужно начать с небольшой задачи
+        </h2>
+        <p className="text-xs sm:text-sm text-slate-300 max-w-3xl">
+          Не обязательно сразу заходить в большой пакет. Часто достаточно закрыть одну больную точку,
+          чтобы почувствовать разницу и понять, как мы работаем.
+        </p>
+
+        <div className="grid gap-4 md:grid-cols-3 text-xs sm:text-sm">
+          {/* Карточка 1 — Диагностика */}
+          <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 flex flex-col">
+            <h3 className="font-semibold text-slate-50 mb-2">
+              Диагностика и карта текущей системы
+            </h3>
+            <p className="text-slate-300 mb-3">
+              Разбираем, где конкретно у вас ломается путь клиента: заявки, оплаты, доступы, напоминания.
+            </p>
+            <ul className="list-disc pl-4 space-y-1 text-slate-300 mb-3">
+              <li>1–2 созвона по 60–90 минут;</li>
+              <li>карта процессов «как есть» и «как должно быть»;</li>
+              <li>список приоритетных доработок на 2–4 недели.</li>
+            </ul>
+            <p className="mt-auto text-[11px] text-slate-400">
+              Формат: разовый мини-проект, после которого можно решить — двигаться ли в пакет START или GROW.
+            </p>
+          </article>
+
+          {/* Карточка 2 — Антихаос запуска */}
+          <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 flex flex-col">
+            <h3 className="font-semibold text-slate-50 mb-2">
+              Анти-хаос в запуске
+            </h3>
+            <p className="text-slate-300 mb-3">
+              Готовитесь к запуску и боитесь техсбоев? Собираем чек-лист и проводим технический прогон.
+            </p>
+            <ul className="list-disc pl-4 space-y-1 text-slate-300 mb-3">
+              <li>чек-лист под ваш стек (бот, платформа, оплаты, рассылки);</li>
+              <li>прогон ключевых сценариев «как клиент» перед стартом;</li>
+              <li>фиксируем риски и быстрые правки до запуска.</li>
+            </ul>
+            <p className="mt-auto text-[11px] text-slate-400">
+              Часто после такого захода становится понятно, нужен ли постоянный пакет сопровождения.
+            </p>
+          </article>
+
+          {/* Карточка 3 — Точечный фикс */}
+          <article className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4 flex flex-col">
+            <h3 className="font-semibold text-slate-50 mb-2">
+              Локальный фикс или небольшая доработка
+            </h3>
+            <p className="text-slate-300 mb-3">
+              Когда «в целом всё работает», но одна конкретная точка бесит и забирает непропорционально много сил.
+            </p>
+            <ul className="list-disc pl-4 space-y-1 text-slate-300 mb-3">
+              <li>починка или упрощение одного сценария/интеграции;</li>
+              <li>миграция с костыльного решения на более устойчивое;</li>
+              <li>микро-инструкция для команды «как теперь жить».</li>
+            </ul>
+            <p className="mt-auto text-[11px] text-slate-400">
+              Хороший вариант, чтобы протестировать нас на небольшой задаче и потом заходить в пакет осознанно.
+            </p>
+          </article>
+        </div>
+      </section>
 
       <p className="mt-5 text-[11px] text-slate-400 max-w-3xl">
         Сейчас у нас нет витрины из десятков кейсов — мы осознанно стартуем компактной студией.
