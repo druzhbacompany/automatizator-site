@@ -1,4 +1,18 @@
 import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Автоматизация без техсбоев: Telegram-боты, n8n и интеграции под ключ',
+  description:
+    'Собираем и поддерживаем Telegram-ботов, воронки, n8n/Make и интеграции с GetCourse и CRM. Помогаем онлайн-школам и бизнесу запускать проекты без паники и техсбоев.',
+  openGraph: {
+    title: 'Автоматизация без техсбоев: Telegram-боты, n8n и интеграции под ключ',
+    description:
+      'Мини-агентство Automatizator: боты, воронки, интеграции и сопровождение. Спокойные запуски вместо ночных техпожаров.',
+    url: '/',
+    type: 'website'
+  }
+};
+
 import Link from 'next/link';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 

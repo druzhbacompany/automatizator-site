@@ -2,9 +2,16 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Услуги по автоматизации — Automatizator',
+  title: 'Услуги по автоматизации: Telegram-боты, n8n, интеграции и сопровождение',
   description:
-    'Мини-агентство по автоматизации запусков и онлайн-школ: боты, интеграции, n8n, техсопровождение.',
+    'Стек услуг по автоматизации: разработка Telegram-ботов, построение воронок, сценарии n8n/Make, интеграции с GetCourse, Salebot, Bizon, Vakas и CRM, разовые задачи и сопровождение.',
+  openGraph: {
+    title: 'Услуги по автоматизации и интеграциям',
+    description:
+      'Выберите формат работы: боты, воронки, фоновые сценарии n8n, интеграции и сопровождение. Настраиваем системы под онлайн-школы, локальный бизнес и студии.',
+    url: '/services',
+    type: 'website'
+  }
 };
 
 export default function ServicesPage() {

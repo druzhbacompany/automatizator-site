@@ -3,9 +3,16 @@ import { Suspense } from 'react';
 import PricingContent from './PricingContent';
 
 export const metadata: Metadata = {
-  title: 'Цены и пакеты — Automatizator',
+  title: 'Тарифы START / GROW / SCALE и разовые задачи по автоматизации',
   description:
-    'Реализуем небольшие задачи и собираем пакеты автоматизации под ключ: боты, n8n, интеграции, отчёты и сопровождение для онлайн-школ, салонов и локального бизнеса.',
+    'Пакеты START, GROW и SCALE для автоматизации и интеграций: от MVP-бота до сопровождения сложных систем. Плюс формат разовых задач для точечных доработок и аварийных фиксов.',
+  openGraph: {
+    title: 'Тарифы на автоматизацию и сопровождение',
+    description:
+      'Выберите уровень: START для MVP, GROW для стабильных запусков, SCALE для масштабирования и сетки продуктов. Есть формат разовых задач без долгих контрактов.',
+    url: '/pricing',
+    type: 'website'
+  }
 };
 
 export default function PricingPage() {

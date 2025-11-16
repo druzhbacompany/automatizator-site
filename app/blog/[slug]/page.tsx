@@ -17,20 +17,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!post) {
     return {
-      title: 'Статья не найдена — Блог Automatizator',
+      title: 'Статья не найдена',
+      robots: { index: false, follow: false }
     };
   }
 
+  const baseTitle = `${post.title}`;
+  const fullTitle = `${baseTitle} — блог об автоматизации`;
+
   return {
-    title: `${post.title} — Блог Automatizator`,
+    title: fullTitle,
     description: post.excerpt,
-    ...(post.canonicalUrl
+    openGraph: {
+      title: fullTitle,
+      description: post.excerpt,
+      type: 'article',
+      url: `/blog/${post.slug}`
+    },
+    alternates: post.canonicalUrl
       ? {
-          alternates: {
-            canonical: post.canonicalUrl,
-          },
+          canonical: post.canonicalUrl
         }
-      : {}),
+      : undefined
   };
 }
 

@@ -108,16 +108,26 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   if (!service) {
     return {
       title: 'Услуга не найдена — Automatizator',
+      robots: {
+        index: false,
+      },
     };
   }
 
   const seo = service.seo ?? {};
-  const baseTitle = service.title ? `${service.title} — Automatizator` : 'Услуга — Automatizator';
+  const title = seo.title || `${service.title} — Automatizator`;
+  const description = seo.description || service.lead;
 
   return {
-    title: seo.title || baseTitle,
-    description: seo.description,
+    title,
+    description,
     keywords: seo.keywords,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      url: `/services/${service.slug}`,
+    },
   };
 }
 

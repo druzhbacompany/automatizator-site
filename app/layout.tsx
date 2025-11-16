@@ -3,8 +3,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Automatizator — Автоматизации и интеграции",
-  description: "Сайты, боты, интеграции, парсеры, n8n — под ключ.",
+  metadataBase: new URL('https://automatizator-site.vercel.app'),
+  title: {
+    default: 'Automatizator — мини-агентство по автоматизации и интеграциям',
+    template: '%s — Automatizator'
+  },
+  description:
+    'Мини-агентство по автоматизации и интеграциям: Telegram-боты, n8n/Make, GetCourse, CRM. Собираем и поддерживаем системы без техсбоев, чтобы запуски проходили спокойно.',
+  openGraph: {
+    type: 'website',
+    locale: 'ru_RU',
+    siteName: 'Automatizator',
+    title: 'Automatizator — мини-агентство по автоматизации и интеграциям',
+    description:
+      'Помогаем онлайн-школам, локальному бизнесу и студиям: боты, воронки, интеграции и сопровождение без техсбоев.',
+    url: 'https://automatizator-site.vercel.app/'
+    // image можно добавить позже, когда будет финальный hero-арт
+    // images: ['/og-default.jpg']
+  },
+  robots: {
+    index: true,
+    follow: true
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -3,9 +3,16 @@ import Link from 'next/link';
 import { getAllPosts } from '@/data/blog';
 
 export const metadata: Metadata = {
-  title: 'Блог — Automatizator',
+  title: 'Блог о Telegram-ботах, автоматизации и интеграциях',
   description:
-    'Статьи про автоматизацию, Telegram-ботов, n8n и системный подход к процессам без магии и воды.',
+    'Практические гайды и разборы по автоматизации: Telegram-боты, n8n/Make, интеграции с GetCourse и CRM, кейсы и стратегии спокойных запусков без техсбоев.',
+  openGraph: {
+    title: 'Блог Automatizator',
+    description:
+      'Статьи о том, как строить систему автоматизации без хаоса: боты, фоновые сценарии, интеграции и сопровождение.',
+    url: '/blog',
+    type: 'website'
+  }
 };
 
 type BlogPageProps = {
