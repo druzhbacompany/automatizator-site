@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru">
-      <body>
+      <body className="min-h-screen bg-slate-950 text-slate-50 antialiased">
         <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/75 backdrop-blur">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
             <Link href="/" className="flex items-center gap-2">
