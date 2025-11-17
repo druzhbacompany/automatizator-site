@@ -9,82 +9,14 @@
   --color-primary:#d40000;
   --radius-xl:1.25rem;
 }
+html,body{background:var(--color-bg);color:var(--color-fg);}
+
 @layer components{
   .container{ @apply mx-auto max-w-[1120px] px-5}
+  .btn{ @apply inline-flex items-center gap-2 rounded-lg px-4 py-3 font-bold text-white bg-[var(--color-primary)]}
   .small{ @apply text-sm text-gray-400}
+  .card{ @apply bg-[#111317] border border-[#1f2430] rounded-xl}
   .table{ @apply w-full border-separate border-spacing-0}
   .table th,.table td{ @apply px-4 py-3 border-b border-[#222733]}
   .table th{ @apply text-left font-bold text-slate-300}
-
-  /* Оболочка страницы */
-  .page-shell {
-    @apply min-h-screen bg-slate-950 text-slate-50;
-  }
-
-  /* Максимальная ширина и горизонтальные отступы */
-  .page-container {
-    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  /* Вертикальные отступы секций */
-  .section-y-lg {
-    @apply py-16 sm:py-20;
-  }
-
-  .section-y-md {
-    @apply py-12 sm:py-16;
-  }
-
-  /* Заголовки */
-
-  /* Главный h1-оффер */
-  .heading-hero {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight uppercase;
-  }
-
-  /* Основные h2 секций */
-  .heading-section {
-    @apply text-2xl sm:text-3xl font-bold tracking-tight leading-snug uppercase;
-  }
-
-  /* Заголовки внутри карточек / подпункты (h3) */
-  .heading-card {
-    @apply text-lg sm:text-xl font-semibold leading-snug;
-  }
-
-  /* Текст */
-
-  /* Основной текст на тёмном фоне */
-  .body-main-dark {
-    @apply text-sm sm:text-base leading-relaxed text-slate-300;
-  }
-
-  /* Основной текст на светлом фоне */
-  .body-main-light {
-    @apply text-sm sm:text-base leading-relaxed text-slate-700;
-  }
-
-  /* Мелкий служебный текст */
-  .body-small-dark {
-    @apply text-xs sm:text-sm leading-snug text-slate-400;
-  }
-
-  /* Акцентный лейбл над заголовком */
-  .label-accent {
-    @apply text-xs uppercase tracking-[0.25em] text-lime-400 font-semibold;
-  }
-
-  /* Цифры и подписи */
-  .metric-value {
-    @apply text-3xl sm:text-4xl font-extrabold tracking-tight text-lime-400;
-  }
-
-  .metric-label {
-    @apply text-xs sm:text-sm uppercase tracking-wide text-slate-400;
-  }
-
-  /* Основная CTA-кнопка (жёлтая) */
-  .btn-primary-main {
-    @apply inline-flex items-center justify-center rounded-full bg-yellow-400 px-6 sm:px-8 py-3 text-sm sm:text-base font-semibold text-slate-900 shadow-lg shadow-yellow-500/30 hover:bg-yellow-300 transition-colors;
-  }
 }
