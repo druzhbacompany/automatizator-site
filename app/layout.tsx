@@ -52,6 +52,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/blog" className="hover:text-white">
                 Блог
               </Link>
+              <Link href="/store" className="hover:text-white">
+                Магазин автоматизаций
+              </Link>
               <Link href="/#faq" className="hover:text-white">
                 FAQ
               </Link>
