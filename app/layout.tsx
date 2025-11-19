@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://automatizator-site.vercel.app'),
@@ -33,10 +34,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/75 backdrop-blur">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-sm font-semibold tracking-tight text-slate-50">
-                Automatizator
-              </span>
+            <Link href="/" className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/logo-automatizator.png"
+                  alt="Automatizator"
+                  width={64}
+                  height={64}
+                  priority
+                  className="h-9 sm:h-10 w-auto drop-shadow-[0_0_26px_rgba(52,211,153,0.95)]"
+                />
+                <span className="hidden text-sm font-semibold tracking-[0.16em] uppercase text-slate-100 sm:inline">
+                  Automatizator
+                </span>
+              </div>
             </Link>
 
             <nav className="flex items-center gap-6 text-sm text-slate-300">
