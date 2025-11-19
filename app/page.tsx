@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
@@ -24,68 +25,59 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
       {/* HERO */}
-      <section className="border-b border-slate-800 bg-[radial-gradient(circle_at_top,_#0f172a,_#020617)]">
-        <div className="max-w-5xl mx-auto px-4 pt-16 pb-14 lg:pt-20 lg:pb-18 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/70 px-3 py-1 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-slate-300 mb-5">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            <span>{HERO.kicker}</span>
-          </div>
+<section className="border-b border-slate-800 bg-[radial-gradient(circle_at_top,_#0f172a,_#020617)]">
+  <div className="max-w-5xl mx-auto px-4 pt-16 pb-14 lg:pt-20 lg:pb-18 text-center">
+    <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/70 px-3 py-1 text-xs md:text-sm font-semibold uppercase tracking-[0.16em] text-slate-300 mb-5">
+      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+      <span>{HERO.kicker}</span>
+    </div>
 
-          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight leading-tight mb-4 max-w-3xl mx-auto">
-            Спокойный запуск и работа вашей автоматизации. Мы берём на себя
-            ботов, интеграции и техподдержку.
-          </h1>
+    <h1 className="text-3xl md:text-5xl font-semibold tracking-tight leading-tight mb-4 max-w-3xl mx-auto">
+      Спокойный запуск и работа вашей автоматизации. Мы берём на себя ботов, интеграции и техподдержку.
+    </h1>
 
-          <p className="text-slate-200 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-            Каждый техсбой в день запуска — это потерянные заявки, деньги и
-            репутация. Мы берём на себя Telegram-ботов, воронки, n8n-сценарии и
-            интеграции с CRM, чтобы перед запуском вы не сидели в чате в панике,
-            а спокойно занимались продуктом и продажами.
-          </p>
+    <p className="text-slate-200 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+      Каждый техсбой в день запуска — это потерянные заявки, деньги и репутация. Мы берём на себя Telegram-ботов, воронки, n8n-сценарии и интеграции с CRM, чтобы перед запуском вы не сидели в чате в панике, а спокойно занимались продуктом и продажами.
+    </p>
 
-          <HeroBulletsRotator />
+    <HeroBulletsRotator />
 
-          <ul className="sr-only">
-            <li>
-              • Автоматизация процессов на базе Telegram-ботов, CRM и n8n /
-              Make — без зоопарка из «костылей».
-            </li>
-            <li>
-              • Настраиваем воронки, напоминания, оплаты и уведомления так,
-              чтобы заявки не терялись в чатах.
-            </li>
-            <li>
-              • Работаем по SLA: регламенты, сроки реакции и понятные правила
-              вместо «фрилансера, который пропал перед запуском».
-            </li>
-            <li>
-              • Формат небольшой студии: берём ограниченное число проектов и
-              погружаемся в ваши процессы, а не в «поток».
-            </li>
-          </ul>
+    <ul className="sr-only">
+      <li>
+        • Автоматизация процессов на базе Telegram-ботов, CRM и n8n / Make — без зоопарка из «костылей».
+      </li>
+      <li>
+        • Настраиваем воронки, напоминания, оплаты и уведомления так, чтобы заявки не терялись в чатах.
+      </li>
+      <li>
+        • Работаем по SLA: регламенты, сроки реакции и понятные правила вместо «фрилансера, который пропал перед запуском».
+      </li>
+      <li>
+        • Формат небольшой студии: берём ограниченное число проектов и погружаемся в ваши процессы, а не в «поток».
+      </li>
+    </ul>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-6 mb-2">
-            <Link
-              href={HERO.primaryCtaHref}
-              className="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-5 py-2.5 text-sm md:text-base font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
-            >
-              Записаться на консультацию по автоматизации
-            </Link>
-            <Link
-              href={HERO.secondaryCtaHref}
-              className="inline-flex items-center justify-center rounded-lg border border-slate-700 px-5 py-2.5 text-sm md:text-base font-semibold text-slate-100 hover:border-slate-500 hover:bg-slate-900/60 transition"
-            >
-              Оценить, сколько времени и денег мы можем вам сэкономить
-            </Link>
-          </div>
+    <div className="flex flex-wrap items-center justify-center gap-3 mt-6 mb-2">
+      <Link
+        href={HERO.primaryCtaHref}
+        className="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-5 py-2.5 text-sm md:text-base font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
+      >
+        Записаться на консультацию по автоматизации
+      </Link>
+      <Link
+        href={HERO.secondaryCtaHref}
+        className="inline-flex items-center justify-center rounded-lg border border-slate-700 px-5 py-2.5 text-sm md:text-base font-semibold text-slate-100 hover:border-slate-500 hover:bg-slate-900/60 transition"
+      >
+        Оценить, сколько времени и денег мы можем вам сэкономить
+      </Link>
+    </div>
 
-          <p className="mt-5 text-sm md:text-base leading-relaxed text-emerald-200 max-w-2xl mx-auto text-center">
-            30 минут созвона: разбираем текущие процессы, находим слабые места и
-            прикидываем, сколько денег теряется на ручных операциях и техсбоях.
-            Без навязчивых «продаж в лоб».
-          </p>
-        </div>
-      </section>
+    <p className="mt-5 text-sm md:text-base leading-relaxed text-emerald-200 max-w-2xl mx-auto text-center">
+      30 минут созвона: разбираем текущие процессы, находим слабые места и прикидываем, сколько денег теряется на
+      ручных операциях и техсбоях. Без навязчивых «продаж в лоб».
+    </p>
+  </div>
+</section>
 
       {/* СИТУАЦИИ */}
       <section className="mt-16 max-w-5xl mx-auto px-4">
