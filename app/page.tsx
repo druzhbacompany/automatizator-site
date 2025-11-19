@@ -193,21 +193,36 @@ export default function HomePage() {
 
         <div className="grid gap-4 md:grid-cols-3">
           {/* Сегмент 1 */}
-          <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 flex flex-col">
-            <h3 className="text-base md:text-lg font-semibold tracking-tight mb-2">
+          <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 flex flex-col">
+            <h3 className="text-lg md:text-xl font-semibold mb-4">
               Онлайн-школы, курсы и продюсерские проекты
             </h3>
-            <p className="text-sm leading-relaxed text-slate-200 mb-3">
+            <p className="text-xs md:text-sm text-slate-200 mb-4">
               Запуски, вечные воронки, вебинары, марафоны. Много подписчиков,
               много точек входа и огромное давление «нельзя облажаться при
               аудитории».
             </p>
-            <ul className="text-sm md:text-base leading-relaxed text-slate-300 space-y-1 mb-3 list-disc pl-4">
-              <li>Час простоя = десятки тысяч ₽ упущенной выручки.</li>
-              <li>Админы тонут в чате вместо нормальной поддержки.</li>
-              <li>Каждый новый запуск собирается «с нуля» и на костылях.</li>
+            <ul className="space-y-2 mb-4">
+              <li className="flex gap-2 items-start">
+                <CheckCircleIcon className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.9)]" />
+                <span className="text-sm md:text-base leading-relaxed text-slate-50">
+                  Час простоя = десятки тысяч ₽ упущенной выручки.
+                </span>
+              </li>
+              <li className="flex gap-2 items-start">
+                <CheckCircleIcon className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.9)]" />
+                <span className="text-sm md:text-base leading-relaxed text-slate-50">
+                  Админы тонут в чате вместо нормальной поддержки.
+                </span>
+              </li>
+              <li className="flex gap-2 items-start">
+                <CheckCircleIcon className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.9)]" />
+                <span className="text-sm md:text-base leading-relaxed text-slate-50">
+                  Каждый новый запуск собирается «с нуля» и на костылях.
+                </span>
+              </li>
             </ul>
-            <p className="text-sm leading-relaxed text-slate-400 mt-auto">
+            <p className="text-xs md:text-sm text-slate-300 mt-auto">
               Мы собираем единую систему заявок, оплат и доступов, прогоняем её
               через чек-листы и даём понятную картину: что где настроено и как
               это живёт при росте.
@@ -215,23 +230,36 @@ export default function HomePage() {
           </article>
 
           {/* Сегмент 2 */}
-          <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 flex flex-col">
-            <h3 className="text-base md:text-lg font-semibold tracking-tight mb-2">
+          <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 flex flex-col">
+            <h3 className="text-lg md:text-xl font-semibold mb-4">
               Локальный бизнес и сервисы
             </h3>
-            <p className="text-sm leading-relaxed text-slate-200 mb-3">
+            <p className="text-xs md:text-sm text-slate-200 mb-4">
               Салоны красоты, клиники, студии, центры обучения. Клиенты пишут в
               мессенджеры, звонят, оставляют заявки на сайте — часть просто
               теряется по дороге.
             </p>
-            <ul className="text-sm md:text-base leading-relaxed text-slate-300 space-y-1 mb-3 list-disc pl-4">
-              <li>
-                Нет единого окна для заявок: всё в WhatsApp, Telegram и Excel.
+            <ul className="space-y-2 mb-4">
+              <li className="flex gap-2 items-start">
+                <CheckCircleIcon className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.9)]" />
+                <span className="text-sm md:text-base leading-relaxed text-slate-50">
+                  Нет единого окна для заявок: всё в WhatsApp, Telegram и Excel.
+                </span>
               </li>
-              <li>Администраторы забывают перезвонить и подтвердить записи.</li>
-              <li>Невозможно посчитать, сколько денег реально уходит в никуда.</li>
+              <li className="flex gap-2 items-start">
+                <CheckCircleIcon className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.9)]" />
+                <span className="text-sm md:text-base leading-relaxed text-slate-50">
+                  Администраторы забывают перезвонить и подтвердить записи.
+                </span>
+              </li>
+              <li className="flex gap-2 items-start">
+                <CheckCircleIcon className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.9)]" />
+                <span className="text-sm md:text-base leading-relaxed text-slate-50">
+                  Невозможно посчитать, сколько денег реально уходит в никуда.
+                </span>
+              </li>
             </ul>
-            <p className="text-sm leading-relaxed text-slate-400 mt-auto">
+            <p className="text-xs md:text-sm text-slate-300 mt-auto">
               Мы выстраиваем понятную воронку: заявки → записи → напоминания →
               повторные визиты, с интеграцией в CRM и ботами, которые не дают
               клиенту «потеряться».
@@ -239,24 +267,37 @@ export default function HomePage() {
           </article>
 
           {/* Сегмент 3 */}
-          <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 flex flex-col">
-            <h3 className="text-base md:text-lg font-semibold tracking-tight mb-2">
+          <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 flex flex-col">
+            <h3 className="text-lg md:text-xl font-semibold mb-4">
               Небольшие агентства и эксперты-консультанты
             </h3>
-            <p className="text-sm leading-relaxed text-slate-200 mb-3">
+            <p className="text-xs md:text-sm text-slate-200 mb-4">
               Вы уже продаёте услуги и консультации, но всё держится на ручных
               задачах и одном-двух людях, которые «знают, как там всё устроено
               внутри».
             </p>
-            <ul className="text-sm md:text-base leading-relaxed text-slate-300 space-y-1 mb-3 list-disc pl-4">
-              <li>
-                Рассылки, заявки и оплату сложно повторять от проекта к
-                проекту.
+            <ul className="space-y-2 mb-4">
+              <li className="flex gap-2 items-start">
+                <CheckCircleIcon className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.9)]" />
+                <span className="text-sm md:text-base leading-relaxed text-slate-50">
+                  Рассылки, заявки и оплату сложно повторять от проекта к
+                  проекту.
+                </span>
               </li>
-              <li>Боитесь, что рост клиентов сложит текущую систему.</li>
-              <li>Нет ощущения управляемости: техника живёт своей жизнью.</li>
+              <li className="flex gap-2 items-start">
+                <CheckCircleIcon className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.9)]" />
+                <span className="text-sm md:text-base leading-relaxed text-slate-50">
+                  Боитесь, что рост клиентов сложит текущую систему.
+                </span>
+              </li>
+              <li className="flex gap-2 items-start">
+                <CheckCircleIcon className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.9)]" />
+                <span className="text-sm md:text-base leading-relaxed text-slate-50">
+                  Нет ощущения управляемости: техника живёт своей жизнью.
+                </span>
+              </li>
             </ul>
-            <p className="text-sm leading-relaxed text-slate-400 mt-auto">
+            <p className="text-xs md:text-sm text-slate-300 mt-auto">
               Мы помогаем упаковать процессы в повторяемую систему: боты,
               сценарии, n8n-флоу и интеграции, которые можно масштабировать без
               ощущения «техспагетти».
